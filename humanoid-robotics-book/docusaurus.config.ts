@@ -127,5 +127,8 @@ const config: Config = {
     },
   ],
   copyright: `Copyright © ${new Date().getFullYear()} Humanoid Robotics & Physical AI Book.`,
-},
+    },
+  } satisfies Preset.ThemeConfig,
+} satisfies Config;
+
 export default config;
