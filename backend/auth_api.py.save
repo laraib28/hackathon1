@@ -1,0 +1,321 @@
+@app.get("/api/auth/me")
+async def get_current_user(token: str, db: Session = Depends(get_db)):
+from fastapi import FastAPI, HTTPException, Depends, Header
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, EmailStr
+from typing import Optional, List
+import secrets
+from datetime import datetime
+from sqlalchemy.orm import Session
+from database import get_db, create_user, get_user_by_email, get_user_by_id, update_user_background
+
+app = FastAPI(title="Auth API")
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Simple in-memory session store
+active_sessions = {}
+
+# Models
+class SignupRequest(BaseModel):
+    email: EmailStr
+    password: str
+    name: str
+    software_experience: str
+    hardware_experience: str
+    programming_level: str
+    programming_languages: List[str]
+    learning_goals: str
+    industry_background: Optional[str] = None
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserResponse(BaseModel):
+    id: str
+    email: str
+    name: str
+    software_experience: Optional[str] = None
+    hardware_experience: Optional[str] = None
+    programming_level: Optional[str] = None
+    programming_languages: Optional[List] = None
+    learning_goals: Optional[str] = None
+    industry_background: Optional[str] = None
+    preferred_language: str = "en"
+    content_difficulty: str = "intermediate"
+
+def generate_token():
+    return secrets.token_urlsafe(32)
+
+@app.post("/api/auth/signup")
+async def signup(request: SignupRequest, db: Session = Depends(get_db)):
+    existing = get_user_by_email(db, request.email)
+    if existing:
+        raise HTTPException(400, "Email already registered")
+
+    user_id = secrets.token_urlsafe(16)
+    user_data = {
+        "id": user_id,
+        "email": request.email,
+        "name": request.name,
+        "software_experience": request.software_experience,
+        "hardware_experience": request.hardware_experience,
+        "programming_level": request.programming_level,
+        "programming_languages": request.programming_languages,
+        "learning_goals": request.learning_goals,
+        "industry_background": request.industry_background,
+    }
+
+    user = create_user(db, user_data)
+
+    token = generate_token()
+    active_sessions[token] = {
+        "user_id": user.id,
+        "created_at": datetime.utcnow()
+    }
+
+    return {"success": True, "token": token, "user": user_data}
+
+@app.post("/api/auth/login")
+async def login(request: LoginRequest, db: Session = Depends(get_db)):
+    user = get_user_by_email(db, request.email)
+    if not user:
+        raise HTTPException(401, "Invalid credentials")
+
+    token = generate_token()
+    active_sessions[token] = {"user_id": user.id, "created_at": datetime.utcnow()}
+
+    return {"success": True, "token": token, "user": {
+        "id": user.id,
+        "email": user.email,
+        "name": user.name,
+        "software_experience": user.software_experience,
+        "hardware_experience": user.hardware_experience,
+        "programming_level": user.programming_level,
+        "programming_languages": user.programming_languages,
+        "learning_goals": user.learning_goals,
+        "industry_background": user.industry_background
+    }}
+
+@app.get("/api/auth/me")
+async def get_current_user(authorization: str = Header(None), db: Session = Depends(get_db)):
+    if not authorization:
+        raise HTTPException(401, "Missing Authorization header")
+
+    token = authorization.replace("Bearer ", "")
+
+    if token not in active_sessions:
+        raise HTTPException(401, "Invalid or expired token")
+
+    session = active_sessions[token]
+    user = get_user_by_id(db, session["user_id"])
+    if not user:
+        raise HTTPException(404, "User not found")
+
+    return user
+
+@app.post("/api/auth/logout")
+async def logout(authorization: str = Header(None)):
+    token = authorization.replace("Bearer ", "")
+    
+    if token in active_sessions:
+        del active_sessions[token]
+
+    return {"success": True, "message": "Logged out"}
+
+"""
+Authentication API (Improved Version)
+Token is now passed through Authorization Header like:
+Authorization: Bearer <token>
+"""
+
+from fastapi import FastAPI, HTTPException, Depends, Header
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, EmailStr
+from typing import Optional, List
+import secrets
+from datetime import datetime
+from sqlalchemy.orm import Session
+from database import get_db, create_user, get_user_by_email, get_user_by_id, update_user_background, User
+
+app = FastAPI(title="Auth API")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# In-memory token store (use Redis or JWT in production)
+active_sessions = {}
+
+# ----------------------------- MODELS ----------------------------- #
+
+class SignupRequest(BaseModel):
+    email: EmailStr
+    password: str
+    name: str
+    software_experience: str
+    hardware_experience: str
+    programming_level: str
+    programming_languages: List[str]
+    learning_goals: str
+    industry_background: Optional[str] = None
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserResponse(BaseModel):
+    id: str
+    email: str
+    name: str
+    software_experience: Optional[str] = None
+    hardware_experience: Optional[str] = None
+    programming_level: Optional[str] = None
+    programming_languages: Optional[List] = None
+    learning_goals: Optional[str] = None
+    industry_background: Optional[str] = None
+    preferred_language: str = "en"
+    content_difficulty: str = "intermediate"
+
+# ----------------------------- HELPERS ----------------------------- #
+
+def generate_token() -> str:
+    return secrets.token_urlsafe(32)
+
+def extract_token(authorization: Optional[str]) -> str:
+    """Extract token from 'Authorization: Bearer <token>'"""
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Missing Authorization header")
+
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid token format")
+
+    return authorization.split(" ")[1]
+
+# ----------------------------- ROUTES ----------------------------- #
+
+@app.post("/api/auth/signup")
+async def signup(request: SignupRequest, db: Session = Depends(get_db)):
+    # Check if email exists
+    if get_user_by_email(db, request.email):
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    # Create user
+    user_id = secrets.token_urlsafe(16)
+
+    user_data = {
+        "id": user_id,
+        "email": request.email,
+        "name": request.name,
+        "software_experience": request.software_experience,
+        "hardware_experience": request.hardware_experience,
+        "programming_level": request.programming_level,
+        "programming_languages": request.programming_languages,
+        "learning_goals": request.learning_goals,
+        "industry_background": request.industry_background,
+    }
+
+    user = create_user(db, user_data)
+
+    # Token
+    token = generate_token()
+    active_sessions[token] = {
+        "user_id": user.id,
+        "created_at": datetime.utcnow()
+    }
+
+    return {
+        "success": True,
+        "token": token,
+        "user": UserResponse(**user.__dict__)
+    }
+
+
+@app.post("/api/auth/login")
+async def login(request: LoginRequest, db: Session = Depends(get_db)):
+    user = get_user_by_email(db, request.email)
+
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    # NOTE: Password check add later (currently skipped)
+
+    # Create session
+    token = generate_token()
+    active_sessions[token] = {
+        "user_id": user.id,
+        "created_at": datetime.utcnow()
+    }
+
+    return {
+        "success": True,
+        "token": token,
+        "user": UserResponse(**user.__dict__)
+    }
+
+
+@app.get("/api/auth/me")
+async def get_current_user(
+    authorization: Optional[str] = Header(None),
+    db: Session = Depends(get_db)
+):
+    token = extract_token(authorization)
+
+    if token not in active_sessions:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    user_id = active_sessions[token]["user_id"]
+    user = get_user_by_id(db, user_id)
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return UserResponse(**user.__dict__)
+
+
+@app.post("/api/auth/logout")
+async def logout(authorization: Optional[str] = Header(None)):
+    token = extract_token(authorization)
+
+    if token in active_sessions:
+        del active_sessions[token]
+
+    return {"success": True, "message": "Logged out successfully"}
+
+
+@app.put("/api/auth/profile")
+async def update_profile(
+    updates: dict,
+    authorization: Optional[str] = Header(None),
+    db: Session = Depends(get_db)
+):
+    token = extract_token(authorization)
+
+    if token not in active_sessions:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    user_id = active_sessions[token]["user_id"]
+    user = update_user_background(db, user_id, updates)
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return {"success": True, "message": "Profile updated"}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8001)

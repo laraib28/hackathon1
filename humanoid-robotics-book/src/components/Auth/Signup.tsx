@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useHistory } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Signup() {
@@ -12,6 +12,11 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const { signup, loginWithGoogle } = useAuth();
   const history = useHistory();
+  const location = useLocation();
+
+  // Get redirect path from query params
+  const searchParams = new URLSearchParams(location.search);
+  const redirectPath = searchParams.get('redirect') || '/';
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -28,7 +33,8 @@ export default function Signup() {
       setError('');
       setLoading(true);
       await signup(email, password, displayName);
-      history.push('/');
+      // Redirect to intended page after successful signup
+      history.push(redirectPath);
     } catch (err: any) {
       setError(err.message || 'Failed to create account');
     } finally {
@@ -41,7 +47,8 @@ export default function Signup() {
       setError('');
       setLoading(true);
       await loginWithGoogle();
-      history.push('/');
+      // Redirect to intended page after successful signup
+      history.push(redirectPath);
     } catch (err: any) {
       setError(err.message || 'Failed to sign up with Google');
     } finally {

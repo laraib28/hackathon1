@@ -1,0 +1,16 @@
+{
+  "link.title.Book Content": "کتاب کا مواد",
+  "link.title.Advanced Topics": "اعلیٰ موضوعات",
+  "link.title.Resources": "وسائل",
+  "link.item.label.Foundations": "بنیادی تصورات",
+  "link.item.label.ROS 2 Basics": "ROS 2 کی بنیادی باتیں",
+  "link.item.label.Digital Twin": "ڈیجیٹل ٹوئن",
+  "link.item.label.Isaac Platform": "Isaac پلیٹ فارم",
+  "link.item.label.VLA Models": "VLA ماڈلز",
+  "link.item.label.System Architecture": "سسٹم آرکیٹیکچر",
+  "link.item.label.Career Paths": "کیرئیر کے راستے",
+  "link.item.label.GitHub": "GitHub",
+  "link.item.label.ROS 2 Docs": "ROS 2 دستاویزات",
+  "link.item.label.NVIDIA Isaac": "NVIDIA Isaac",
+  "copyright": "کاپی رائٹ © {year} ہیومنائیڈ روبوٹکس اور فزیکل اے آئی کتاب۔"
+}

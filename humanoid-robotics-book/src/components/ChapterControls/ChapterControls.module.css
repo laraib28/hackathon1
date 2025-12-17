@@ -1,0 +1,172 @@
+.controlsContainer {
+  margin: 24px 0;
+  padding: 0;
+}
+
+.controlsCard {
+  background: var(--ifm-background-surface-color);
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.controlsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.controlsHeader h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.userBadge {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-dark);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.controlsButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--ifm-color-primary);
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 160px;
+}
+
+.controlButton:hover:not(:disabled) {
+  background: var(--ifm-color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.controlButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.controlButton.active {
+  background: var(--ifm-color-success);
+  border-color: var(--ifm-color-success);
+  color: white;
+}
+
+.buttonIcon {
+  font-size: 18px;
+}
+
+.buttonText {
+  white-space: nowrap;
+}
+
+.loadingBar {
+  margin-top: 16px;
+  height: 4px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loadingProgress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  animation: loading 1.5s ease-in-out infinite;
+  width: 40%;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.loginPrompt {
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--ifm-color-warning-lightest);
+  border-left: 4px solid var(--ifm-color-warning);
+  border-radius: 4px;
+}
+
+.loginPrompt p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ifm-font-color-base);
+}
+
+.loginLink {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}
+
+.userInfo {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 6px;
+}
+
+.userInfo small {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 12px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .controlsButtons {
+    flex-direction: column;
+  }
+
+  .controlButton {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .controlsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* RTL support */
+[dir="rtl"] .controlsCard {
+  text-align: right;
+}
+
+[dir="rtl"] .loginPrompt {
+  border-left: none;
+  border-right: 4px solid var(--ifm-color-warning);
+}

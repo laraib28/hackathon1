@@ -1,6 +1,11 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+/**
+ * Authentication Context - Better Auth Integration
+ * Provides auth state and methods to all components
+ */
+import React, { createContext, useContext, ReactNode } from 'react';
 import * as authService from '../services/authService';
 import type { User } from '../services/authService';
+import { useSession } from '../lib/auth-client';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -28,8 +33,18 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Use Better Auth's useSession hook
+  const { data: session, isPending } = useSession();
+
+  // Convert Better Auth session to our User format
+  const currentUser: User | null = session?.user ? {
+    id: session.user.id,
+    email: session.user.email,
+    name: session.user.name || session.user.email.split('@')[0],
+    emailVerified: session.user.emailVerified || false,
+    image: session.user.image,
+    createdAt: session.user.createdAt || new Date(),
+  } : null;
 
   async function signup(email: string, password: string, displayName?: string) {
     await authService.signup(email, password, displayName);
@@ -55,19 +70,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
     await authService.updateUserProfile(displayName, photoURL);
   }
 
-  useEffect(() => {
-    // Set up auth state listener
-    const unsubscribe = authService.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
-
   const value: AuthContextType = {
     currentUser,
-    loading,
+    loading: isPending,
     signup,
     login,
     logout,
@@ -78,7 +83,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 }

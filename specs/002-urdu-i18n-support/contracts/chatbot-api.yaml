@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: Chatbot API with Urdu Translation Support
+  description: |
+    API contract for the chatbot backend service that supports bilingual interactions (English and Urdu).
+    The API accepts user queries with a language parameter and returns responses in the requested language.
+    Translation is handled server-side using Gemini API.
+  version: 1.0.0
+  contact:
+    name: Humanoid Robotics Book Team
+    url: https://hackathon1-9y2e.vercel.app
+
+servers:
+  - url: https://api.example.com/v1
+    description: Production server (placeholder - replace with actual backend URL)
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+paths:
+  /chat:
+    post:
+      summary: Send a chat message and receive a response
+      description: |
+        Accepts a user query with language metadata and returns a response in the requested language.
+        The backend will:
+        1. Receive the query and target language
+        2. If language is Urdu, translate query to English
+        3. Process the query (retrieve relevant docs, generate answer)
+        4. If language is Urdu, translate response back to Urdu
+        5. Return the translated response
+      operationId: sendChatMessage
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+            examples:
+              englishQuery:
+                summary: English query
+                value:
+                  query: "What is ROS2?"
+                  language: "en"
+                  sessionId: "sess_abc123"
+                  context: "https://hackathon1-9y2e.vercel.app/part2-modules/module1-ros2/intro"
+              urduQuery:
+                summary: Urdu query
+                value:
+                  query: "ROS2 کیا ہے؟"
+                  language: "ur"
+                  sessionId: "sess_abc123"
+                  context: "https://hackathon1-9y2e.vercel.app/ur/part2-modules/module1-ros2/intro"
+      responses:
+        '200':
+          description: Successful response with answer in requested language
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+              examples:
+                englishResponse:
+                  summary: English response
+                  value:
+                    answer: "ROS2 (Robot Operating System 2) is an open-source robotics middleware that provides libraries and tools to help software developers create robot applications."
+                    language: "en"
+                    confidence: 0.95
+                    sources:
+                      - "https://hackathon1-9y2e.vercel.app/part2-modules/module1-ros2/chapter-04-introduction-to-ros2"
+                urduResponse:
+                  summary: Urdu response
+                  value:
+                    answer: "ROS2 (Robot Operating System 2) ایک اوپن سورس روبوٹکس مڈل ویئر ہے جو سافٹ ویئر ڈویلپرز کو روبوٹ ایپلیکیشنز بنانے میں مدد کرنے کے لیے لائبریریز اور ٹولز فراہم کرتا ہے۔"
+                    language: "ur"
+                    confidence: 0.95
+                    sources:
+                      - "https://hackathon1-9y2e.vercel.app/ur/part2-modules/module1-ros2/chapter-04-introduction-to-ros2"
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                emptyQuery:
+                  summary: Empty query
+                  value:
+                    error: "Query cannot be empty"
+                    code: "INVALID_INPUT"
+                invalidLanguage:
+                  summary: Invalid language code
+                  value:
+                    error: "Language must be 'en' or 'ur'"
+                    code: "INVALID_LANGUAGE"
+        '429':
+          description: Too many requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Rate limit exceeded. Please try again in 60 seconds."
+                code: "RATE_LIMIT_EXCEEDED"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Translation service temporarily unavailable. Please try again in English."
+                code: "TRANSLATION_SERVICE_ERROR"
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Chatbot service is temporarily unavailable. Please try again later."
+                code: "SERVICE_UNAVAILABLE"
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - query
+        - language
+      properties:
+        query:
+          type: string
+          minLength: 1
+          maxLength: 2000
+          description: User's question or message
+          example: "What is ROS2?"
+        language:
+          type: string
+          enum: [en, ur]
+          description: Target language for the response
+          example: "en"
+        sessionId:
+          type: string
+          format: uuid
+          description: Optional session ID to maintain conversation context
+          example: "sess_abc123"
+        context:
+          type: string
+          format: uri
+          description: Optional URL of the current page for contextual answers
+          example: "https://hackathon1-9y2e.vercel.app/part2-modules/module1-ros2/intro"
+
+    ChatResponse:
+      type: object
+      required:
+        - answer
+        - language
+      properties:
+        answer:
+          type: string
+          description: Bot's response in the requested language
+          example: "ROS2 is a flexible framework for writing robot software."
+        language:
+          type: string
+          enum: [en, ur]
+          description: Language of the response (matches request language)
+          example: "en"
+        confidence:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Optional confidence score for the answer (0.0 to 1.0)
+          example: 0.95
+        sources:
+          type: array
+          items:
+            type: string
+            format: uri
+          description: Optional list of source URLs used to generate the answer
+          example:
+            - "https://hackathon1-9y2e.vercel.app/part2-modules/module1-ros2/chapter-04-introduction-to-ros2"
+        translatedFrom:
+          type: string
+          enum: [en, ur]
+          description: Optional indicator of source language if response was translated
+          example: "en"
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - code
+      properties:
+        error:
+          type: string
+          description: Human-readable error message
+          example: "Query cannot be empty"
+        code:
+          type: string
+          description: Machine-readable error code
+          example: "INVALID_INPUT"
+        details:
+          type: object
+          description: Optional additional error details
+          example:
+            field: "query"
+            constraint: "minLength"
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication (if required by backend)
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Chat
+    description: Chatbot conversation endpoints

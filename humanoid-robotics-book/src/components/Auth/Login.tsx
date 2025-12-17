@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useHistory } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Login() {
@@ -10,6 +10,11 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const { login, loginWithGoogle } = useAuth();
   const history = useHistory();
+  const location = useLocation();
+
+  // Get redirect path from query params
+  const searchParams = new URLSearchParams(location.search);
+  const redirectPath = searchParams.get('redirect') || '/';
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -19,9 +24,9 @@ export default function Login() {
       setLoading(true);
       await login(email, password);
 
-      // ✔ Correct redirect to your book homepage
-      history.push('/humanoid-robotics-book/');
-      
+      // Redirect to intended page after successful login
+      history.push(redirectPath);
+
     } catch (err: any) {
       setError(err.message || 'Failed to log in');
     } finally {
@@ -35,8 +40,8 @@ export default function Login() {
       setLoading(true);
       await loginWithGoogle();
 
-      // ✔ Google login redirect fixed
-      history.push('/humanoid-robotics-book/');
+      // Redirect to intended page after successful login
+      history.push(redirectPath);
 
     } catch (err: any) {
       setError(err.message || 'Failed to log in with Google');
