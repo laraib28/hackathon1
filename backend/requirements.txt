@@ -1,7 +1,3 @@
-fastapi
-uvicorn
+flask
+flask-cors
 python-dotenv
-openai
-qdrant-client
-sqlalchemy
-psycopg2-binary
