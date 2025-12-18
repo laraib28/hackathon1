@@ -11,20 +11,19 @@ const config: Config = {
     v4: true,
   },
 
-  // Vercel URL
+  // ✅ Vercel deployment
   url: 'https://hackathon1-9y2e.vercel.app',
   baseUrl: '/',
 
-  organizationName: 'laraib28',
-  projectName: 'humanoid-robotics-book',
-
   onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
-  // Custom fields for API configuration
+  // ✅ Backend API (local + prod safe)
   customFields: {
     apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:8000',
   },
 
+  // ✅ i18n (English + Urdu)
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ur'],
@@ -48,11 +47,14 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/',
+          routeBasePath: '/', // ✅ important
         },
         blog: false,
         theme: {
-          customCss: ['./src/css/custom.css', './src/css/rtl.css'],
+          customCss: [
+            './src/css/custom.css',
+            './src/css/rtl.css',
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -65,9 +67,9 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
+
     colorMode: {
       defaultMode: 'light',
-      disableSwitch: false,
       respectPrefersColorScheme: true,
     },
 
@@ -77,13 +79,12 @@ const config: Config = {
         alt: 'Robotics Book Logo',
         src: 'img/logo.svg',
       },
-      hideOnScroll: false,
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'bookSidebar',
-          position: 'left',
           label: '📚 Book',
+          position: 'left',
         },
         {
           to: '/part4-future/chapter-24-career-paths',
@@ -94,7 +95,6 @@ const config: Config = {
           type: 'localeDropdown',
           position: 'right',
         },
-        { type: 'search', position: 'right' },
         {
           to: '/login',
           label: 'Sign In',
@@ -107,7 +107,7 @@ const config: Config = {
           className: 'button button--primary button--sm',
         },
         {
-          href: 'https://github.com/laraib28/humanoid-robotics-book',
+          href: 'https://github.com/laraib28/hackathon1',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -138,15 +138,15 @@ const config: Config = {
         {
           title: 'Resources',
           items: [
-            { label: 'GitHub', href: 'https://github.com/laraib28/humanoid-robotics-book' },
+            { label: 'GitHub', href: 'https://github.com/laraib28/hackathon1' },
             { label: 'ROS 2 Docs', href: 'https://docs.ros.org/en/humble/' },
             { label: 'NVIDIA Isaac', href: 'https://developer.nvidia.com/isaac-ros' },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Humanoid Robotics & Physical AI Book.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Humanoid Robotics & Physical AI`,
     },
   } satisfies Preset.ThemeConfig,
-} satisfies Config;
+};
 
 export default config;
