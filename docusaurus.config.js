@@ -25,7 +25,17 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'ur'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl',
+      },
+    },
   },
 
   presets: [
@@ -74,6 +84,10 @@ const config = {
           to: '/part4-future/chapter-24-career-paths',
           label: '💼 Careers',
           position: 'left',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         { type: 'search', position: 'right' },
         {
