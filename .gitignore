@@ -20,3 +20,5 @@ dist/
 .DS_Store
 Thumbs.db
 humonide-robot
+backend/node_modules
+node_modules
