@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useHistory } from '@docusaurus/router';
+import { useNavigate, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Login() {
@@ -9,7 +9,24 @@ export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login, loginWithGoogle } = useAuth();
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get redirect path from query params
+  const searchParams = new URLSearchParams(location.search);
+  const redirectParam = searchParams.get('redirect');
+  let redirectPath = '/';
+
+  // Handle i18n redirect paths
+  if (redirectParam) {
+    const decodedRedirect = decodeURIComponent(redirectParam);
+    // If redirect path is for Urdu locale, ensure we maintain the locale
+    if (location.pathname.startsWith('/ur/')) {
+      redirectPath = decodedRedirect.startsWith('/ur') ? decodedRedirect : `/ur${decodedRedirect}`;
+    } else {
+      redirectPath = decodedRedirect;
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -19,9 +36,9 @@ export default function Login() {
       setLoading(true);
       await login(email, password);
 
-      // ✔ Correct redirect to your book homepage
-      history.push('/humanoid-robotics-book/');
-      
+      // Redirect to intended page after successful login
+      navigate(redirectPath);
+
     } catch (err: any) {
       setError(err.message || 'Failed to log in');
     } finally {
@@ -35,8 +52,8 @@ export default function Login() {
       setLoading(true);
       await loginWithGoogle();
 
-      // ✔ Google login redirect fixed
-      history.push('/humanoid-robotics-book/');
+      // Redirect to intended page after successful login
+      navigate(redirectPath);
 
     } catch (err: any) {
       setError(err.message || 'Failed to log in with Google');
@@ -126,7 +143,7 @@ export default function Login() {
 
         <div className={styles.authFooter}>
           Don't have an account?{' '}
-          <a href="/signup" className={styles.authLink}>
+          <a href={location.pathname.startsWith('/ur/') ? '/ur/signup' : '/signup'} className={styles.authLink}>
             Sign up
           </a>
         </div>

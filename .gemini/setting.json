@@ -1,14 +1,20 @@
 {
-	"mcpServers": {
-		"context7": {
-			"command": "npx",
-			"args": [
-				"-y",
-				"@upstash/context7-mcp"
-			],
-			"env": {
-				"CONTEXT7_API_KEY": "ctx7sk-9c08abdb-4f42-4160-8483-46abfa9195a3"
-			}
-		}
-	}
+  "mcpServers": {
+    "chatkit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "YOUR_CHATKIT_API_KEY"
+      }
+    },
+    "betterauth": {
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "YOUR_BETTERAUTH_API_KEY"
+      }
+    }
+  }
 }

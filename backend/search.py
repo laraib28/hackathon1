@@ -1,9 +1,8 @@
 """
 Semantic Search Module
-Retrieve data from Qdrant using Sentence Transformers (local embeddings - 100% FREE!)
+Retrieve data from Qdrant using configurable embedding provider (Cohere or Sentence Transformers)
 """
 
-from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from typing import List, Dict, Optional
 import json
@@ -13,25 +12,28 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Import embedding service
+from embedding_service import get_embedding_service, EmbeddingService
+
 # Configuration
 COLLECTION_NAME = "humanoid_robotics_docs"
 
-# Load model (runs locally - no API needed!)
-print("📥 Loading embedding model...")
-model = SentenceTransformer('all-MiniLM-L6-v2')
-print("✅ Model ready!")
+# Initialize embedding service with auto detection (Cohere if API key available, otherwise local)
+print("🔍 Initializing embedding service for search...")
+embedding_service: EmbeddingService = get_embedding_service(provider_type="auto")
+print(f"✅ Embedding service ready! Using: {embedding_service.current_provider_name}")
 
 qdrant = QdrantClient(
     url=os.getenv("QDRANT_URL"),
     api_key=os.getenv("QDRANT_API_KEY")
 )
 
-def generate_query_embedding(query: str) -> List[float]:
+def generate_query_embedding(query: str, input_type: str = "search_query") -> List[float]:
     """
-    Generate embedding for search query using Sentence Transformers (local)
+    Generate embedding for search query using configured embedding service (Cohere or Sentence Transformers)
     """
-    embedding = model.encode(query, convert_to_numpy=True)
-    return embedding.tolist()
+    embedding = embedding_service.embed_single(query, input_type)
+    return embedding
 
 def search(
     query: str,
@@ -52,15 +54,16 @@ def search(
     try:
         # Generate query embedding
         print(f"🔍 Searching for: '{query}'")
-        query_vector = generate_query_embedding(query)
+        query_vector = generate_query_embedding(query, input_type="search_query")
 
-        # Search in Qdrant
-        results = qdrant.search(
+        # Search in Qdrant using the newer API
+        from qdrant_client.http import models
+        results = qdrant.query_points(
             collection_name=COLLECTION_NAME,
-            query_vector=query_vector,
+            query=query_vector,
             limit=limit,
             score_threshold=score_threshold
-        )
+        ).points
 
         # Format results
         formatted_results = []
@@ -68,11 +71,11 @@ def search(
             formatted_results.append({
                 "rank": idx,
                 "score": round(result.score, 4),
-                "url": result.payload.get("url", ""),
-                "content": result.payload.get("content", ""),
-                "chunk_index": result.payload.get("chunk_index", 0),
-                "total_chunks": result.payload.get("total_chunks", 0),
-                "source": result.payload.get("source", "")
+                "url": result.payload.get("url", "") if result.payload else "",
+                "content": result.payload.get("content", "") if result.payload else "",
+                "chunk_index": result.payload.get("chunk_index", 0) if result.payload else 0,
+                "total_chunks": result.payload.get("total_chunks", 0) if result.payload else 0,
+                "source": result.payload.get("source", "") if result.payload else ""
             })
 
         return formatted_results

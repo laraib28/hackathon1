@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useHistory } from '@docusaurus/router';
+import { useNavigate, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Signup() {
@@ -11,7 +11,24 @@ export default function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signup, loginWithGoogle } = useAuth();
-  const history = useHistory();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get redirect path from query params
+  const searchParams = new URLSearchParams(location.search);
+  const redirectParam = searchParams.get('redirect');
+  let redirectPath = '/';
+
+  // Handle i18n redirect paths
+  if (redirectParam) {
+    const decodedRedirect = decodeURIComponent(redirectParam);
+    // If redirect path is for Urdu locale, ensure we maintain the locale
+    if (location.pathname.startsWith('/ur/')) {
+      redirectPath = decodedRedirect.startsWith('/ur') ? decodedRedirect : `/ur${decodedRedirect}`;
+    } else {
+      redirectPath = decodedRedirect;
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -28,7 +45,8 @@ export default function Signup() {
       setError('');
       setLoading(true);
       await signup(email, password, displayName);
-      history.push('/');
+      // Redirect to intended page after successful signup
+      navigate(redirectPath);
     } catch (err: any) {
       setError(err.message || 'Failed to create account');
     } finally {
@@ -41,7 +59,8 @@ export default function Signup() {
       setError('');
       setLoading(true);
       await loginWithGoogle();
-      history.push('/');
+      // Redirect to intended page after successful signup
+      navigate(redirectPath);
     } catch (err: any) {
       setError(err.message || 'Failed to sign up with Google');
     } finally {
@@ -160,7 +179,7 @@ export default function Signup() {
 
         <div className={styles.authFooter}>
           Already have an account?{' '}
-          <a href="/login" className={styles.authLink}>
+          <a href={location.pathname.startsWith('/ur/') ? '/ur/login' : '/login'} className={styles.authLink}>
             Sign in
           </a>
         </div>

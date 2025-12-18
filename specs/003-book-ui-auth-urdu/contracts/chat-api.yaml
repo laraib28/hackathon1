@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Chat API (RAG-powered with Multi-language Support)
+  description: Chatbot API with Qdrant vector search and OpenAI translation
+  version: 1.0.0
+  contact:
+    name: Backend Team
+    url: https://hackathon1-production-aaf0.up.railway.app
+
+servers:
+  - url: https://hackathon1-production-aaf0.up.railway.app
+    description: Production backend (Railway)
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /api/chat:
+    post:
+      summary: Send chat message
+      description: |
+        RAG-powered chat endpoint with multi-language support.
+        Searches Qdrant vector database for relevant book content,
+        generates response using OpenAI GPT-3.5, and translates to
+        target language if needed.
+      operationId: sendChatMessage
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  minLength: 1
+                  maxLength: 1000
+                  description: User's chat message
+                  example: "What is a humanoid robot?"
+                target_language:
+                  type: string
+                  enum: [en, ur]
+                  default: en
+                  description: Target language for response (en=English, ur=Urdu)
+                  example: "en"
+                selected_text:
+                  type: string
+                  nullable: true
+                  description: Optional selected text from book for context
+                  example: "Humanoid robots are robots designed to resemble humans."
+                conversation_history:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      role:
+                        type: string
+                        enum: [user, assistant]
+                      content:
+                        type: string
+                  description: Previous conversation messages (last 6 used)
+                  example:
+                    - role: user
+                      content: "What is ROS2?"
+                    - role: assistant
+                      content: "ROS2 is the Robot Operating System..."
+                user_id:
+                  type: string
+                  nullable: true
+                  description: Optional user ID for logging chat history
+                  example: "abc123xyz"
+      responses:
+        '200':
+          description: Chat response generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request (empty message, invalid language code)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatError'
+        '500':
+          description: Server error (OpenAI API failure, Qdrant unavailable)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatError'
+
+components:
+  schemas:
+    ChatResponse:
+      type: object
+      properties:
+        response:
+          type: string
+          description: Chatbot's answer in target language
+          example: "A humanoid robot is a robot designed to resemble the human body in shape and movement."
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+                example: "https://hackathon1-r5lc.vercel.app/part1-foundations/chapter-02"
+              score:
+                type: number
+                format: float
+                example: 0.85
+              content_preview:
+                type: string
+                example: "Humanoid robots are robots designed to resemble humans in physical appearance..."
+          description: RAG sources from Qdrant search
+        language:
+          type: string
+          enum: [en, ur]
+          description: Language of the response
+          example: "en"
+
+    ChatError:
+      type: object
+      properties:
+        detail:
+          oneOf:
+            - type: string
+              example: "OpenAI API not configured"
+            - type: object
+              properties:
+                message:
+                  type: string
+                  example: "Sorry, I couldn't process your request at this time."
+                error:
+                  type: string
+                  example: "Qdrant connection failed"

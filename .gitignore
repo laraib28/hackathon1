@@ -2,3 +2,23 @@ backend/.venv/
 backend/venv/
 *.env
 __pycache__/
+
+# Python
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+humonide-robot
+backend/node_modules
+node_modules
