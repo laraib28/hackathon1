@@ -74,16 +74,17 @@ export default function ChatWidget() {
     setIsLoading(true);
 
     try {
-      // ✅ FIXED: Always use http://localhost:8000/api/chat
-      const API_URL = 'http://localhost:8000/api/chat';
+      // ✅ FIXED: Use environment variable for API URL to work in dev and prod
+      const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+      const API_ENDPOINT = `${API_BASE_URL}/api/chat`;
 
-      console.log('🔄 Sending POST request to:', API_URL);
+      console.log('🔄 Sending request to:', API_ENDPOINT);
       console.log('📦 Request body:', {
         message: userMessage.text,
         target_language: detectedLanguage,
       });
 
-      const response = await fetch(API_URL, {
+      const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

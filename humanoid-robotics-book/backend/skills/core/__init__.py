@@ -1,0 +1,3 @@
+"""
+Core skills package initialization
+"""

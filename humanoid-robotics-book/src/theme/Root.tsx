@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from '@docusaurus/router';
+import { AuthProvider } from '../context/AuthContext';
+import ProtectedRoute from '../components/ProtectedRoute';
 import ChatWidget from '../components/ChatWidget/ChatWidget';
 
 export default function Root({ children }: { children: React.ReactNode }) {
   const [selectedText, setSelectedText] = useState<string>('');
   const [showAskButton, setShowAskButton] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
+  const router = useRouter();
 
   useEffect(() => {
     const handleSelectionChange = () => {
@@ -47,42 +51,58 @@ export default function Root({ children }: { children: React.ReactNode }) {
     window.getSelection()?.removeAllRanges();
   };
 
+  // Determine which pages are public (don't need authentication)
+  // Include i18n paths as well
+  const isPublicPage = router.pathname === '/' ||
+                       router.pathname === '/login' ||
+                       router.pathname === '/signup' ||
+                       router.pathname === '/ur' ||
+                       router.pathname === '/ur/' ||
+                       router.pathname.startsWith('/ur/login') ||
+                       router.pathname.startsWith('/ur/signup');
+
+  const publicPages = ['/', '/login', '/signup', '/ur', '/ur/login', '/ur/signup'];
+
   return (
-    <>
-      {children}
+    <AuthProvider>
+      <ProtectedRoute publicPages={publicPages}>
+        <>
+          {children}
 
-      {/* Ask button for text selection */}
-      {showAskButton && (
-        <button
-          onClick={handleAskClick}
-          style={{
-            position: 'absolute',
-            left: `${buttonPosition.x}px`,
-            top: `${buttonPosition.y}px`,
-            padding: '6px 12px',
-            backgroundColor: '#0066cc',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            fontSize: '13px',
-            fontWeight: '500',
-            cursor: 'pointer',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-            zIndex: 9999,
-            whiteSpace: 'nowrap'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#0052a3';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = '#0066cc';
-          }}
-        >
-          Ask
-        </button>
-      )}
+          {/* Ask button for text selection */}
+          {showAskButton && (
+            <button
+              onClick={handleAskClick}
+              style={{
+                position: 'absolute',
+                left: `${buttonPosition.x}px`,
+                top: `${buttonPosition.y}px`,
+                padding: '6px 12px',
+                backgroundColor: '#0066cc',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                fontSize: '13px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                zIndex: 9999,
+                whiteSpace: 'nowrap'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#0052a3';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#0066cc';
+              }}
+            >
+              Ask
+            </button>
+          )}
 
-      <ChatWidget />
-    </>
+          <ChatWidget />
+        </>
+      </ProtectedRoute>
+    </AuthProvider>
   );
 }

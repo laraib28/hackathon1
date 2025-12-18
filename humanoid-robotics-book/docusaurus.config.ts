@@ -90,6 +90,10 @@ const config: Config = {
           label: '💼 Careers',
           position: 'left',
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         { type: 'search', position: 'right' },
         {
           to: '/login',

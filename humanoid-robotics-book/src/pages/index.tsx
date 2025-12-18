@@ -168,6 +168,8 @@ function HomepageChatbot() {
 
     setLoading(true);
     setAnswer('');
+    
+  const isUrdu = /[\u0600-\u06FF]/.test(question)
 
     try {
       const response = await fetch('https://hackathon1-production-aaf0.up.railway.app/api/chat', {
@@ -177,7 +179,7 @@ function HomepageChatbot() {
         },
         body: JSON.stringify({
           message: question,
-          language: 'en'
+          language: isUrdu? 'ur' :'en'
         }),
       });
 

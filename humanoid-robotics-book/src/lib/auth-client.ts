@@ -5,8 +5,19 @@
 import { createAuthClient } from "better-auth/react";
 
 // Better Auth client pointing to backend
+const getBackendUrl = () => {
+  // Use environment variable if available, otherwise fallback to localhost
+  if (typeof window !== 'undefined') {
+    // Client side
+    return window.location.origin.replace(window.location.port, '8000');
+  } else {
+    // Server side (SSR)
+    return process.env.REACT_APP_API_URL || process.env.API_URL || 'http://localhost:8000';
+  }
+};
+
 export const authClient = createAuthClient({
-  baseURL: "http://localhost:8000", // Backend API
+  baseURL: getBackendUrl(), // Backend API
 });
 
 // Export Better Auth methods
