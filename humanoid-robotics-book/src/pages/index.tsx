@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import {useState} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -157,6 +158,96 @@ function BookModules() {
   );
 }
 
+function HomepageChatbot() {
+  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const handleAsk = async () => {
+    if (!question.trim()) return;
+
+    setLoading(true);
+    setAnswer('');
+
+    try {
+      const response = await fetch('https://hackathon1-production-aaf0.up.railway.app/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: question,
+          language: 'en'
+        }),
+      });
+
+      const data = await response.json();
+      setAnswer(data.response || 'No response received');
+    } catch (error) {
+      setAnswer('Error: Could not connect to chatbot');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <section style={{padding: '4rem 0', background: 'var(--ifm-background-color)'}}>
+      <div className="container">
+        <div className="text--center" style={{marginBottom: '2rem'}}>
+          <Heading as="h2" style={{fontSize: '2.5rem', marginBottom: '1rem'}}>
+            Ask the Robotics Assistant
+          </Heading>
+          <p style={{fontSize: '1.1rem', opacity: 0.8}}>
+            Get instant answers about humanoid robotics, ROS 2, and more
+          </p>
+        </div>
+
+        <div style={{maxWidth: '800px', margin: '0 auto'}}>
+          <div style={{display: 'flex', gap: '1rem', marginBottom: '2rem'}}>
+            <input
+              type="text"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleAsk()}
+              placeholder="Ask a question about robotics..."
+              style={{
+                flex: 1,
+                padding: '0.75rem 1rem',
+                fontSize: '1rem',
+                borderRadius: '8px',
+                border: '2px solid var(--ifm-color-emphasis-300)',
+                outline: 'none'
+              }}
+            />
+            <button
+              onClick={handleAsk}
+              disabled={loading}
+              className="button button--primary button--lg"
+              style={{minWidth: '120px'}}>
+              {loading ? 'Asking...' : 'Ask'}
+            </button>
+          </div>
+
+          {answer && (
+            <div style={{
+              padding: '1.5rem',
+              borderRadius: '8px',
+              background: 'var(--ifm-card-background-color)',
+              border: '1px solid var(--ifm-color-emphasis-200)',
+              lineHeight: '1.6'
+            }}>
+              <strong style={{display: 'block', marginBottom: '0.5rem', color: 'var(--ifm-color-primary)'}}>
+                Answer:
+              </strong>
+              {answer}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
@@ -168,6 +259,7 @@ export default function Home(): ReactNode {
         <BookStats />
         <HomepageFeatures />
         <BookModules />
+        <HomepageChatbot />
       </main>
     </Layout>
   );
