@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import { useAuth } from '../../context/AuthContext';
 import { useHistory, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Login() {
+  return (
+    <BrowserOnly>
+      {() => <LoginInner />}
+    </BrowserOnly>
+  );
+}
+
+function LoginInner() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,12 +22,11 @@ export default function Login() {
   const history = useHistory();
   const location = useLocation();
 
-  // Get redirect path from query params
+  // redirect handling
   const searchParams = new URLSearchParams(location.search);
   const redirectParam = searchParams.get('redirect');
   let redirectPath = '/';
 
-  // Handle i18n redirect paths
   if (redirectParam) {
     const decodedRedirect = decodeURIComponent(redirectParam);
     if (location.pathname.startsWith('/ur/')) {
@@ -95,7 +103,11 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit" disabled={loading} className={styles.submitButton}>
+          <button
+            type="submit"
+            disabled={loading}
+            className={styles.submitButton}
+          >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
@@ -112,9 +124,7 @@ export default function Login() {
 
         <div className={styles.authFooter}>
           Don’t have an account?{' '}
-          <a
-            href={location.pathname.startsWith('/ur/') ? '/ur/signup' : '/signup'}
-          >
+          <a href={location.pathname.startsWith('/ur/') ? '/ur/signup' : '/signup'}>
             Sign up
           </a>
         </div>
