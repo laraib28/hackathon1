@@ -1,8 +1,26 @@
 {
-  "title": "ہیومنائیڈ روبوٹکس اور فزیکل اے آئی",
-  "logo.alt": "روبوٹکس کتاب لوگو",
-  "item.label.📚 Book": "📚 کتاب",
-  "item.label.💼 Careers": "💼 کیرئیر",
-  "item.label.Sign In": "سائن ان",
-  "item.label.Sign Up": "سائن اپ"
+  "title": {
+    "message": "ہیومنائیڈ روبوٹکس اور فزیکل اے آئی",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "روبوٹکس کتاب لوگو",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.📚 Book": {
+    "message": "📚 کتاب",
+    "description": "Navbar item with label 📚 Book"
+  },
+  "item.label.💼 Careers": {
+    "message": "💼 کیرئیر",
+    "description": "Navbar item with label 💼 Careers"
+  },
+  "item.label.Sign In": {
+    "message": "سائن ان",
+    "description": "Navbar item with label Sign In"
+  },
+  "item.label.Sign Up": {
+    "message": "سائن اپ",
+    "description": "Navbar item with label Sign Up"
+  }
 }

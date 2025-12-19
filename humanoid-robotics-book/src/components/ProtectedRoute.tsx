@@ -3,7 +3,7 @@
  * Wraps protected content and redirects unauthenticated users to login
  */
 import React from 'react';
-import { useLocation, useNavigate } from '@docusaurus/router';
+import { useLocation, Redirect } from '@docusaurus/router';
 import { useAuth } from '../context/AuthContext';
 
 interface ProtectedRouteProps {
@@ -17,7 +17,6 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 }) => {
   const { currentUser, loading } = useAuth();
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Check if current path is a public page, including i18n versions
   const isPublicPage = publicPages.some(publicPath => {
@@ -56,12 +55,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return <>{children}</>;
   }
 
-  // Redirect to login for protected content
+  // If user is not authenticated and route is protected, redirect to login
   // Store the attempted route for redirect after login
   const from = location.pathname + location.search;
-  navigate(`/login?redirect=${encodeURIComponent(from)}`, { replace: true });
+  const redirectUrl = `/login?redirect=${encodeURIComponent(from)}`;
 
-  return null;
+  return <Redirect to={redirectUrl} />;
 };
 
 export default ProtectedRoute;

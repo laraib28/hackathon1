@@ -1,16 +1,58 @@
 {
-  "link.title.Book Content": "کتاب کا مواد",
-  "link.title.Advanced Topics": "اعلیٰ موضوعات",
-  "link.title.Resources": "وسائل",
-  "link.item.label.Foundations": "بنیادی تصورات",
-  "link.item.label.ROS 2 Basics": "ROS 2 کی بنیادی باتیں",
-  "link.item.label.Digital Twin": "ڈیجیٹل ٹوئن",
-  "link.item.label.Isaac Platform": "Isaac پلیٹ فارم",
-  "link.item.label.VLA Models": "VLA ماڈلز",
-  "link.item.label.System Architecture": "سسٹم آرکیٹیکچر",
-  "link.item.label.Career Paths": "کیرئیر کے راستے",
-  "link.item.label.GitHub": "GitHub",
-  "link.item.label.ROS 2 Docs": "ROS 2 دستاویزات",
-  "link.item.label.NVIDIA Isaac": "NVIDIA Isaac",
-  "copyright": "کاپی رائٹ © {year} ہیومنائیڈ روبوٹکس اور فزیکل اے آئی کتاب۔"
+  "link.title.Book Content": {
+    "message": "کتاب کا مواد",
+    "description": "The title of the first footer column"
+  },
+  "link.title.Advanced Topics": {
+    "message": "اعلیٰ موضوعات",
+    "description": "The title of the second footer column"
+  },
+  "link.title.Resources": {
+    "message": "وسائل",
+    "description": "The title of the third footer column"
+  },
+  "link.item.label.Foundations": {
+    "message": "بنیادی تصورات",
+    "description": "The label of footer link with title=Book Content linking to /part1-foundations/intro"
+  },
+  "link.item.label.ROS 2 Basics": {
+    "message": "ROS 2 کی بنیادی باتیں",
+    "description": "The label of footer link with title=Book Content linking to /part2-modules/module1-ros2/chapter-04-introduction-to-ros2"
+  },
+  "link.item.label.Digital Twin": {
+    "message": "ڈیجیٹل ٹوئن",
+    "description": "The label of footer link with title=Book Content linking to /part2-modules/module2-digital-twin/chapter-08-what-is-digital-twin"
+  },
+  "link.item.label.Isaac Platform": {
+    "message": "Isaac پلیٹ فارم",
+    "description": "The label of footer link with title=Book Content linking to /part2-modules/module3-isaac/chapter-12-introduction-nvidia-isaac"
+  },
+  "link.item.label.VLA Models": {
+    "message": "VLA ماڈلز",
+    "description": "The label of footer link with title=Advanced Topics linking to /part2-modules/module4-vla/chapter-16-what-is-vla"
+  },
+  "link.item.label.System Architecture": {
+    "message": "سسٹم آرکیٹیکچر",
+    "description": "The label of footer link with title=Advanced Topics linking to /part3-capstone/chapter-20-complete-architecture"
+  },
+  "link.item.label.Career Paths": {
+    "message": "کیرئیر کے راستے",
+    "description": "The label of footer link with title=Advanced Topics linking to /part4-future/chapter-24-career-paths"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with title=Resources linking to https://github.com/laraib28/humanoid-robotics-book"
+  },
+  "link.item.label.ROS 2 Docs": {
+    "message": "ROS 2 دستاویزات",
+    "description": "The label of footer link with title=Resources linking to https://docs.ros.org/en/humble/"
+  },
+  "link.item.label.NVIDIA Isaac": {
+    "message": "NVIDIA Isaac",
+    "description": "The label of footer link with title=Resources linking to https://developer.nvidia.com/isaac-ros"
+  },
+  "copyright": {
+    "message": "کاپی رائٹ © {year} ہیومنائیڈ روبوٹکس اور فزیکل اے آئی کتاب۔",
+    "description": "The footer copyright"
+  }
 }

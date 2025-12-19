@@ -1,21 +1,78 @@
 {
-  "theme.ErrorPageContent.title": "یہ صفحہ کریش ہو گیا۔",
-  "theme.ErrorPageContent.tryAgain": "دوبارہ کوشش کریں",
-  "theme.NotFound.title": "صفحہ نہیں ملا",
-  "theme.NotFound.p1": "ہم وہ نہیں ڈھونڈ سکے جو آپ تلاش کر رہے تھے۔",
-  "theme.NotFound.p2": "براہ کرم سائٹ کے مالک سے رابطہ کریں جس نے آپ کو اصل URL دیا۔",
-  "theme.docs.paginator.previous": "پچھلا",
-  "theme.docs.paginator.next": "اگلا",
-  "theme.common.editThisPage": "یہ صفحہ ترمیم کریں",
-  "theme.common.skipToMainContent": "مرکزی مواد پر جائیں",
-  "theme.docs.sidebar.collapseButtonTitle": "سائیڈبار بند کریں",
-  "theme.docs.sidebar.expandButtonTitle": "سائیڈبار کھولیں",
-  "theme.SearchBar.label": "تلاش کریں",
-  "theme.SearchPage.searchBar.placeholder": "یہاں تلاش کریں",
-  "theme.SearchPage.inputLabel": "تلاش",
-  "theme.SearchPage.noResultsText": "کوئی نتائج نہیں ملے",
-  "theme.blog.paginator.newerPost": "نیا",
-  "theme.blog.paginator.olderPost": "پرانا",
-  "theme.blog.post.readMore": "مزید پڑھیں",
-  "theme.blog.post.readingTime": "{readingTime} منٹ پڑھنا"
+  "theme.ErrorPageContent.title": {
+    "message": "یہ صفحہ کریش ہو گیا۔",
+    "description": "The title of the fallback page when the app crashes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "دوبارہ کوشش کریں",
+    "description": "The label for the button to try again after an error"
+  },
+  "theme.NotFound.title": {
+    "message": "صفحہ نہیں ملا",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "ہم وہ نہیں ڈھونڈ سکے جو آپ تلاش کر رہے تھے۔",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "براہ کرم سائٹ کے مالک سے رابطہ کریں جس نے آپ کو اصل URL دیا۔",
+    "description": "The second paragraph of the 404 page"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "پچھلا",
+    "description": "The label for the previous page in the paginator"
+  },
+  "theme.docs.paginator.next": {
+    "message": "اگلا",
+    "description": "The label for the next page in the paginator"
+  },
+  "theme.common.editThisPage": {
+    "message": "یہ صفحہ ترمیم کریں",
+    "description": "The text for the edit this page link"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "مرکزی مواد پر جائیں",
+    "description": "The skip to main content label"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "سائیڈبار بند کریں",
+    "description": "The title attribute for the sidebar collapse button"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "سائیڈبار کھولیں",
+    "description": "The title attribute for the sidebar expand button"
+  },
+  "theme.SearchBar.label": {
+    "message": "تلاش کریں",
+    "description": "The ARIA label for the search bar"
+  },
+  "theme.SearchPage.searchBar.placeholder": {
+    "message": "یہاں تلاش کریں",
+    "description": "The placeholder for the search bar"
+  },
+  "theme.SearchPage.inputLabel": {
+    "message": "تلاش",
+    "description": "The ARIA label for the search page input"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "کوئی نتائج نہیں ملے",
+    "description": "The text when no results are found in the search page"
+  },
+  "theme.blog.paginator.newerPost": {
+    "message": "نیا",
+    "description": "The newer post label in the blog paginator"
+  },
+  "theme.blog.paginator.olderPost": {
+    "message": "پرانا",
+    "description": "The older post label in the blog paginator"
+  },
+  "theme.blog.post.readMore": {
+    "message": "مزید پڑھیں",
+    "description": "The read more button text"
+  },
+  "theme.blog.post.readingTime": {
+    "message": "{readingTime} منٹ پڑھنا",
+    "description": "The reading time label"
+  }
 }

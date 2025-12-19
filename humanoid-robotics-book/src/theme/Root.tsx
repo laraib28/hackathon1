@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from '@docusaurus/router';
+import { useLocation } from '@docusaurus/router';
 import { AuthProvider } from '../context/AuthContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import ChatWidget from '../components/ChatWidget/ChatWidget';
@@ -8,7 +8,7 @@ export default function Root({ children }: { children: React.ReactNode }) {
   const [selectedText, setSelectedText] = useState<string>('');
   const [showAskButton, setShowAskButton] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  const router = useRouter();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleSelectionChange = () => {
@@ -53,13 +53,13 @@ export default function Root({ children }: { children: React.ReactNode }) {
 
   // Determine which pages are public (don't need authentication)
   // Include i18n paths as well
-  const isPublicPage = router.pathname === '/' ||
-                       router.pathname === '/login' ||
-                       router.pathname === '/signup' ||
-                       router.pathname === '/ur' ||
-                       router.pathname === '/ur/' ||
-                       router.pathname.startsWith('/ur/login') ||
-                       router.pathname.startsWith('/ur/signup');
+  const isPublicPage = pathname === '/' ||
+                       pathname === '/login' ||
+                       pathname === '/signup' ||
+                       pathname === '/ur' ||
+                       pathname === '/ur/' ||
+                       pathname.startsWith('/ur/login') ||
+                       pathname.startsWith('/ur/signup');
 
   const publicPages = ['/', '/login', '/signup', '/ur', '/ur/login', '/ur/signup'];
 
