@@ -52,11 +52,11 @@ export default function UserProfile() {
               fontSize: '1.5rem',
               fontWeight: 'bold'
             }}>
-              {currentUser.displayName?.charAt(0).toUpperCase() || currentUser.email?.charAt(0).toUpperCase()}
+              {currentUser.name?.charAt(0).toUpperCase() || currentUser.email?.charAt(0).toUpperCase()}
             </div>
             <div>
               <div style={{fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.25rem'}}>
-                {currentUser.displayName || 'User'}
+                {currentUser.name || 'User'}
               </div>
               <div style={{color: 'var(--ifm-color-emphasis-600)', fontSize: '0.95rem'}}>
                 {currentUser.email}
@@ -116,7 +116,8 @@ export default function UserProfile() {
                 Authentication Method
               </div>
               <div style={{fontWeight: '600'}}>
-                {currentUser.providerData[0]?.providerId === 'google.com' ? 'Google' : 'Email/Password'}
+                {/* For now, we'll just show that user is authenticated */}
+                Authenticated
               </div>
             </div>
           </div>

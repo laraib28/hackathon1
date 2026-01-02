@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Humanoid Robotics & Physical AI",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Robotics Book Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.📚 Book": {
+    "message": "📚 Book",
+    "description": "Navbar item with label 📚 Book"
+  },
+  "item.label.💼 Careers": {
+    "message": "💼 Careers",
+    "description": "Navbar item with label 💼 Careers"
+  },
+  "item.label.Sign In": {
+    "message": "Sign In",
+    "description": "Navbar item with label Sign In"
+  },
+  "item.label.Sign Up": {
+    "message": "Sign Up",
+    "description": "Navbar item with label Sign Up"
+  }
+}

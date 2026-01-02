@@ -1,0 +1,204 @@
+{
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages navigation",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "پچھلا",
+    "description": "The label used for the previous pagination button in docs"
+  },
+  "theme.docs.paginator.next": {
+    "message": "اگلا",
+    "description": "The label used for the next pagination button in docs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for the button that collapses the sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The ARIA label for the button that collapses the sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs sidebar",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for the button that closes the mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for the button that toggles the mobile sidebar"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label for the button that expands the sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label for the button that expands the sidebar"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used for the unreleased version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used for the unmaintained version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version link"
+  },
+  "theme.common.editThisPage": {
+    "message": "اس صفحے میں ترمیم کریں",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to heading",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page was last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page was last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page was last updated, and by who"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileLanguageDropdown.searchLanguageText": {
+    "message": "Search",
+    "description": "The language used for the mobile language switcher search"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.preset.technologies.usedBy": {
+    "message": "Used by {count} people",
+    "description": "The label used for the technologies preset"
+  },
+  "theme.preset.technologies.learnMore": {
+    "message": "Learn more",
+    "description": "The label used for the technologies preset"
+  },
+  "theme.preset.technologies.usedByCount": {
+    "message": "Used by",
+    "description": "The label used for the technologies preset"
+  },
+  "theme.preset.technologies.usedByCountMoreThan": {
+    "message": "+",
+    "description": "The label used for the technologies preset"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "See all {count} results"
+  },
+  "theme.SearchBar.seeAllPlurals": {
+    "message": "See all {count} results"
+  },
+  "theme.SearchModal.searchBox.resetButtonTitle": {
+    "message": "Clear the query",
+    "description": "The label and ARIA label for search box reset button"
+  },
+  "theme.SearchModal.searchBox.cancelButtonText": {
+    "message": "Cancel",
+    "description": "The label and ARIA label for search box cancel button"
+  },
+  "theme.SearchModal.startScreen.recentSearchesTitle": {
+    "message": "Recent",
+    "description": "The title for recent searches"
+  },
+  "theme.SearchModal.startScreen.noRecentSearchesText": {
+    "message": "No recent searches",
+    "description": "The text when no recent searches"
+  },
+  "theme.SearchModal.startScreen.saveRecentSearchButtonTitle": {
+    "message": "Save this search",
+    "description": "The label for the button to save a recent search"
+  },
+  "theme.SearchModal.startScreen.removeRecentSearchButtonTitle": {
+    "message": "Remove this search from history",
+    "description": "The label for the button to remove a recent search"
+  },
+  "theme.SearchModal.startScreen.favoriteSearchesTitle": {
+    "message": "Favorite",
+    "description": "The title for favorite searches"
+  },
+  "theme.SearchModal.startScreen.removeFavoriteSearchButtonTitle": {
+    "message": "Remove this search from favorites",
+    "description": "The label for the button to remove a favorite search"
+  },
+  "theme.SearchModal.errorScreen.titleText": {
+    "message": "Unable to fetch results",
+    "description": "The title for error screen of search modal"
+  },
+  "theme.SearchModal.errorScreen.helpText": {
+    "message": "You might want to check your network connection.",
+    "description": "The help text for error screen of search modal"
+  },
+  "theme.SearchModal.footer.selectText": {
+    "message": "to select",
+    "description": "The text explain how to select a result"
+  },
+  "theme.SearchModal.footer.selectKeyAriaLabel": {
+    "message": "Enter key",
+    "description": "The ARIA label for the Enter key"
+  },
+  "theme.SearchModal.footer.navigateText": {
+    "message": "to navigate",
+    "description": "The text explain how to navigate between results"
+  },
+  "theme.SearchModal.footer.navigateUpKeyAriaLabel": {
+    "message": "Arrow up",
+    "description": "The ARIA label for the Arrow up key"
+  },
+  "theme.SearchModal.footer.navigateDownKeyAriaLabel": {
+    "message": "Arrow down",
+    "description": "The ARIA label for the Arrow down key"
+  },
+  "theme.SearchModal.footer.closeText": {
+    "message": "to close",
+    "description": "The text explain how to close the modal"
+  },
+  "theme.SearchModal.footer.closeKeyAriaLabel": {
+    "message": "Escape key",
+    "description": "The ARIA label for the Escape key"
+  },
+  "theme.SearchModal.noResultsScreen.noResultsText": {
+    "message": "No results for",
+    "description": "The text on the no results screen"
+  },
+  "theme.SearchModal.noResultsScreen.suggestedQueryText": {
+    "message": "Try searching for",
+    "description": "The text that appears when no results are found, suggesting to try another query"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsText": {
+    "message": "Believe this query should return results?",
+    "description": "The text that appears when no results are found, prompting to report missing results"
+  },
+  "theme.SearchModal.noResultsScreen.reportMissingResultsLinkText": {
+    "message": "Let us know.",
+    "description": "The text for the link to report missing results"
+  },
+  "theme.SearchModal.placeholder": {
+    "message": "Search docs",
+    "description": "The placeholder of the input in the Search bar"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  }
+}

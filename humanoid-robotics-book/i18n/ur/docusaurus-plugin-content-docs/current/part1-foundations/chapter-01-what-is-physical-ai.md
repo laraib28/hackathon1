@@ -1,55 +1,55 @@
 ---
 sidebar_position: 2
-title: "Chapter 1: What is Physical AI?"
+title: "باب 1: فزیکل AI کیا ہے؟"
 ---
 
-# Chapter 1: What is Physical AI?
+# باب 1: فزیکل AI کیا ہے؟
 
-## Learning Objectives
+## سیکھنے کے اہداف
 
-By the end of this chapter, you will be able to:
+اس باب کے اختتام تک، آپ کے اہل ہو جائے گا:
 
-- Define Physical AI and explain how it differs from traditional AI
-- Identify the three core components of Physical AI systems
-- Describe real-world applications of Physical AI across different industries
-- Explain the relationship between embodied intelligence and the physical world
-- Understand why Physical AI represents a paradigm shift in artificial intelligence
+- فزیکل AI کی وضاحت کریں اور یہ کلاسیکل AI سے کیسے مختلف ہے
+- فزیکل AI سسٹم کے تین اہم اجزاء کی شناخت کریں
+- مختلف صنعتوں میں فزیکل AI کے حقیقی دنیا کے اطلاقیوں کی وضاحت کریں
+- جسمانی ذہانت اور مادی دنیا کے درمیان رشتہ کی وضاحت کریں
+- سمجھیں کہ فزیکل AI مصنوعی ذہانت میں ایک نمونہ تبدیلی کیوں ہے
 
-## Prerequisites
+## ضروریات
 
-- Basic understanding of what artificial intelligence (AI) is
-- Familiarity with everyday technology (smartphones, voice assistants, robots)
-- No programming or robotics knowledge required
+- مصنوعی ذہانت (AI) کی بنیادی سمجھ
+- روزمرہ کی ٹیکنالوجی کے ساتھ واقفیت (سمارٹ فون، وائس اسسٹنٹ، روبوٹس)
+- پروگرامنگ یا روبوٹکس کا علم ضروری نہیں ہے
 
-## Introduction: Why This Matters
+## تعارف: یہ کیوں اہم ہے
 
-When you ask ChatGPT a question, it generates text. When you show an image to an AI vision system, it identifies objects. But what happens when AI needs to interact with the physical world—to pick up a cup, navigate a crowded room, or assist an elderly person?
+جب آپ ChatGPT سے سوال پوچھتے ہیں، تو یہ متن تیار کرتا ہے۔ جب آپ AI وژن سسٹم کو ایک تصویر دکھاتے ہیں، تو یہ اشیاء کو پہچانتا ہے۔ لیکن جب AI کو مادی دنیا کے ساتھ بات چیت کرنے کی ضرورت ہوتی ہے - ایک کپ اٹھانا، بھیڑ والے کمرے میں نیویگیٹ کرنا، یا بزرگ شخص کی مدد کرنا - تو کیا ہوتا ہے؟
 
-This is where **Physical AI** comes in.
+یہیں **فزیکل AI** کا کام آتا ہے۔
 
-Traditional AI excels at processing information: recognizing faces, translating languages, or playing chess. But it exists purely in the digital realm. Physical AI bridges the gap between digital intelligence and the physical world, enabling machines to perceive their environment, make decisions, and take actions that have real-world consequences.
+کلاسیکل AI معلومات کو پروسیس کرنے میں ماہر ہے: چہروں کو پہچاننا، زبانوں کا ترجمہ کرنا، یا چیس کھیلنا۔ لیکن یہ صرف ڈیجیٹل دنیا میں موجود ہے۔ فزیکل AI ڈیجیٹل ذہانت اور مادی دنیا کے درمیان پُل کا کام کرتا ہے، مشینوں کو اپنا ماحول سمجھنے، فیصلے کرنے، اور ایسے اعمال کرنے کے قابل بناتا ہے جن کے حقیقی دنیا میں نتائج ہوتے ہیں۔
 
-Think of it this way: ChatGPT can tell you *how* to make coffee, but a Physical AI system can actually *make* the coffee. This fundamental difference—the ability to interact with and manipulate the physical world—is what defines Physical AI.
+اس طرح سوچیں: ChatGPT آپ کو بتا سکتا ہے کہ قہوہ کیسے بنا سکتے ہیں، لیکن ایک فزیکل AI سسٹم اصل میں قہوہ *بنا* سکتا ہے۔ یہ بنیادی فرق - مادی دنیا کے ساتھ بات چیت کرنے اور اسے ہیرا پھیرا کرنے کی صلاحیت - ہی فزیکل AI کی تعریف کرتا ہے۔
 
-In this chapter, we'll explore what Physical AI is, why it matters, and how it's already changing our world. This foundation will prepare you for understanding how humanoid robots—one of the most sophisticated applications of Physical AI—work.
+اس باب میں، ہم یہ جانیں گے کہ فزیکل AI کیا ہے، یہ کیوں اہم ہے، اور یہ ہماری دنیا کو کیسے تبدیل کر رہا ہے۔ یہ بنیاد آپ کو یہ سمجھنے کے لیے تیار کرے گی کہ ہیومنائڈ روبوٹس - فزیکل AI کی سب سے جامع ایپلیکیشنز میں سے ایک - کیسے کام کرتے ہیں۔
 
-## What is Physical AI?
+## فزیکل AI کیا ہے؟
 
-### Defining Physical AI
+### فزیکل AI کی تعریف
 
-**Physical AI** (also called **Embodied AI**) is artificial intelligence that interacts with the physical world through a physical body or embodiment. Unlike traditional AI systems that process data in isolation, Physical AI systems:
+**فزیکل AI** (جسے **جسماں دار AI** بھی کہا جاتا ہے) ایک مصنوعی ذہانت ہے جو جسمانی جسم یا اجسام کے ذریعے مادی دنیا کے ساتھ بات چیت کرتی ہے۔ کلاسیکل AI سسٹم کے برعکس جو معلومات کو علیحدگی میں پروسیس کرتے ہیں، فزیکل AI سسٹم:
 
-1. **Perceive** the physical environment through sensors (cameras, microphones, touch sensors, etc.)
-2. **Reason** about the physical world using AI algorithms
-3. **Act** in the physical world through actuators (motors, grippers, wheels, etc.)
+1. **ادراک** کرتا ہے مادی ماحول کا سینسرز کے ذریعے (کیمرے، مائیکروفون، چھوٹ کے سینسر، وغیرہ)
+2. ** Reasoning** کرتا ہے مادی دنیا کے بارے میں AI الگورتھم کے ذریعے
+3. **عمل** کرتا ہے مادی دنیا میں ایکٹویٹرز کے ذریعے (موٹر، گریبرز، پہیے، وغیرہ)
 
-This creates a continuous **perception-action loop**: the system observes the world, decides what to do, acts, and then observes the results of its actions.
+یہ ایک مسلسل **ادراک-عمل کا چکر** بنتا ہے: سسٹم دنیا کو دیکھتا ہے، فیصلہ کرتا ہے کہ کیا کرنا ہے، عمل کرتا ہے، اور پھر اپنے اعمال کے نتائج کو دیکھتا ہے۔
 
 ```mermaid
 graph LR
-    A[Perceive Environment] --> B[Process & Decide]
-    B --> C[Take Action]
-    C --> D[Change Environment]
+    A[ماحول کا ادراک] --> B[سروے اور فیصلہ]
+    B --> C[عمل کریں]
+    C --> D[ماحول میں تبدیلی]
     D --> A
     style A fill:#e1f5ff
     style B fill:#fff3e1
@@ -57,280 +57,270 @@ graph LR
     style D fill:#fce4ec
 ```
 
-### The Three Pillars of Physical AI
+### فزیکل AI کے تین ستون
 
-Every Physical AI system relies on three interconnected components:
+ہر فزیکل AI سسٹم تین مربوط اجزاء پر منحصر ہے:
 
-#### 1. Perception (Sensing the World)
+#### 1. ادراک (دنیا کا احساس)
 
-Physical AI systems use sensors to gather information about their environment:
+فزیکل AI سسٹم اپنے ماحول کے بارے میں معلومات جمع کرنے کے لیے سینسرز استعمال کرتے ہیں:
 
-- **Cameras** for visual information (objects, people, obstacles)
-- **LiDAR** (Light Detection and Ranging) for 3D mapping and distance measurement
-- **IMU** (Inertial Measurement Unit) for orientation and acceleration
-- **Microphones** for audio input (voice commands, environmental sounds)
-- **Touch/Force sensors** for physical interaction feedback
+- **کیمرے** کے لیے ویژوئل معلومات (اشیاء، لوگ، رکاوٹیں)
+- **LiDAR** (لائٹ ڈیٹیکشن اینڈ رینجنگ) 3D میپنگ اور فاصلہ پیمائش کے لیے
+- **IMU** (انرٹیل میزورمینٹ یونٹ) جہت اور ایکسلریشن کے لیے
+- **مائیکروفون** آڈیو ان پٹ (وائس کمانڈز، ماحولیاتی آوازیں) کے لیے
+- **چھوٹ/فورس سینسرز** جسمانی بات چیت کی فیڈ بیک کے لیے
 
-**Example**: A humanoid robot uses cameras to see a door handle, LiDAR to measure its distance from the door, and force sensors in its hand to detect when it has successfully grasped the handle.
+**مثال**: ایک ہیومنائڈ روبوٹ کیمرے استعمال کرتا ہے دروازے کے ہینڈل کو دیکھنے کے لیے، LiDAR دروازے سے فاصلہ ناپنے کے لیے، اور اس کے ہاتھ میں فورس سینسرز جب وہ ہینڈل کو کامیابی سے تھام لیتا ہے
 
-#### 2. Cognition (Understanding and Deciding)
+#### 2. کوگنیشن (سمجھنا اور فیصلہ کرنا)
 
-After gathering sensory data, Physical AI systems use various AI techniques to understand their environment and make decisions:
+سینسری ڈیٹا جمع کرنے کے بعد، فزیکل AI سسٹم مختلف AI تکنیکوں کا استعمال کرتے ہیں تاکہ اپنے ماحول کو سمجھ سکیں اور فیصلے کر سکیں:
 
-- **Computer Vision** to identify objects, people, and obstacles
-- **Natural Language Processing** to understand voice commands
-- **Path Planning** to navigate from point A to point B
-- **Reinforcement Learning** to improve behavior through trial and error
-- **Large Language Models (LLMs)** to interpret high-level commands and generate action plans
+- **کمپیوٹر وژن** اشیاء، لوگوں، اور رکاوٹوں کو پہچاننے کے لیے
+- **نیچرل لینگویج پروسیسنگ** وائس کمانڈز کو سمجھنے کے لیے
+- **پاتھ پلاننگ** A سے B تک نیویگیٹ کرنے کے لیے
+- **رینفورسمنٹ لرننگ** غلطیوں کے ذریعے بہتری کے لیے
+- **بڑے زبان کے ماڈلز (LLMs)** اعلیٰ سطح کے کمانڈز کی تشریح اور ایکشن پلانز تیار کرنے کے لیے
 
-**Example**: When you tell a robot "bring me the red mug from the kitchen," it uses NLP to understand the command, computer vision to identify the red mug, and path planning to figure out how to navigate to the kitchen.
+**مثال**: جب آپ ایک روبوٹ سے کہتے ہیں "میرے لیے کچن سے لال مگ لائیں"، تو یہ NLP کا استعمال کرتا ہے کمانڈ کو سمجھنے کے لیے، کمپیوٹر وژن کا استعمال کرتا ہے لال مگ کو پہچاننے کے لیے، اور پاتھ پلاننگ کا استعمال کرتا ہے کچن تک جانے کا طریقہ سمجھنے کے لیے۔
 
-#### 3. Action (Interacting with the World)
+#### 3. ایکشن (دنیا کے ساتھ بات چیت)
 
-Finally, Physical AI systems execute their decisions through physical actions:
+آخر میں، فزیکل AI سسٹم اپنے فیصلوں کو جسمانی اعمال کے ذریعے نافذ کرتے ہیں:
 
-- **Locomotion** (walking, rolling, flying) to move through space
-- **Manipulation** (grasping, lifting, placing) to interact with objects
-- **Articulation** (moving joints, changing posture) to perform complex movements
-- **Speech synthesis** to communicate verbally
+- **لوکوموشن** (چلنا، گھومنا، اڑنا) جگہ سے جگہ جانے کے لیے
+- **مینیپولیشن** (پکڑنا، اٹھانا، رکھنا) اشیاء کے ساتھ بات چیت کرنے کے لیے
+- **آرٹیکولیشن** ( joints کو حرکت دینا، posture تبدیل کرنا) پیچیدہ حرکات کرنے کے لیے
+- **سپیچ سنتھیسس** زبانی بات چیت کرنے کے لیے
 
-**Example**: A delivery robot rolls to your door (locomotion), extends its arm (articulation), opens a compartment (manipulation), and says "Your package has arrived" (speech synthesis).
+**مثال**: ایک ڈلیوری روبوٹ آپ کے دروازے تک پہنچتا ہے (لوکوموشن)، اپنا بازو بڑھاتا ہے (آرٹیکولیشن)، ایک خانہ کھولتا ہے (مینیپولیشن)، اور کہتا ہے "آپ کا پیکج پہنچ گیا" (سپیچ سنتھیسس)۔
 
-### Physical AI vs. Traditional AI
+### فزیکل AI بمقابلہ کلاسیکل AI
 
-Let's clarify the difference with a comparison:
+چلو ہم فرق کو ایک موازنہ کے ساتھ واضح کریں:
 
-| Aspect | Traditional AI | Physical AI |
+| پہلو | کلاسیکل AI | فزیکل AI |
 |--------|---------------|-------------|
-| **Environment** | Digital (data, text, images) | Physical (real world) |
-| **Input** | Structured data, files, API calls | Sensor data (noisy, uncertain) |
-| **Output** | Predictions, classifications, text | Physical actions, movements |
-| **Feedback** | Immediate and precise | Delayed and noisy |
-| **Consequences** | Digital errors (wrong answer) | Physical errors (dropped object, collision) |
-| **Example** | Spam filter, language translator | Self-driving car, warehouse robot |
+| **ماحول** | ڈیجیٹل (ڈیٹا، متن، تصاویر) | مادی (حقیقی دنیا) |
+| **ان پٹ** | سٹرکچرڈ ڈیٹا، فائلز، API کالز | سینسر ڈیٹا ( noisy، uncertain) |
+| **آؤٹ پٹ** | پریڈکشنز، کلاسیفکیشنز، متن | جسمانی اعمال، حرکات |
+| **فیڈ بیک** | فوری اور درست | تاخیر اور noisy |
+| **نتائج** | ڈیجیٹل غلطیاں (غلط جواب) | جسمانی غلطیاں (ڈراپ آبجیکٹ، کولیژن) |
+| **مثال** | سپیم فلٹر، زبان کا مترجم | خود کار گاڑی، ویئر ہاؤس روبوٹ |
 
-**Key Insight**: Traditional AI operates in a controlled, predictable digital environment. Physical AI must handle the messy, unpredictable real world where sensors fail, objects move unexpectedly, and actions have irreversible consequences.
+**اہم بصیرت**: کلاسیکل AI ایک کنٹرول، قابل پیش گوئی ڈیجیٹل ماحول میں کام کرتا ہے۔ فزیکل AI کو میس، غیر قابل پیش گوئی حقیقی دنیا کو سنبھالنا ہوتا ہے جہاں سینسر ناکام ہو جاتے ہیں، اشیاء غیر متوقع طور پر حرکت کرتی ہیں، اور اعمال کے نا قابل تردید نتائج ہوتے ہیں۔
 
-## Why "Embodied" Intelligence?
+## "جسماں دار" ذہانت کیوں؟
 
-The term **embodied intelligence** emphasizes that the AI's physical body is not just a container—it fundamentally shapes how the AI understands and interacts with the world.
+**جسماں دار ذہانت** کے اصطلاح پر زور دیتا ہے کہ AI کا جسمانی جسم صرف ایک کنٹینر نہیں ہے - یہ بنیادی طور پر یہ سمجھنے اور دنیا کے ساتھ بات چیت کرنے کے طریقے کو شکل دیتا ہے۔
 
-### The Embodiment Hypothesis
+### جسماں داری کا تصور
 
-In cognitive science, there's a concept called the **embodiment hypothesis**: intelligence arises from the interaction between an agent's body, brain, and environment. In other words:
+کوگنیٹو سائنس میں، ایک تصور ہے جسے **جسماں داری کا تصور** کہا جاتا ہے: ذہانت ایجنٹ کے جسم، دماغ، اور ماحول کے درمیان بات چیت سے پیدا ہوتی ہے۔ دوسرے الفاظ میں:
 
-> "Intelligence is not just thinking—it's thinking *through* a body in an environment."
+> "ذہانت صرف سوچ نہیں ہے - یہ ایک جسم کے ذریعے ایک ماحول میں *سوچنا* ہے۔"
 
-**Example**: A humanoid robot with two legs learns about balance, gravity, and walking in ways that a wheeled robot never could. Its physical form shapes what it can learn and how it learns it.
+**مثال**: دو پائوں والے ہیومنائڈ روبوٹ توازن، گریویٹی، اور چلنے کے بارے میں اس طرح سیکھتا ہے جیسا کہ چلنے والے روبوٹ决
 
-### Why Bodies Matter
+## حقیقی دنیا کے اطلاقیے
 
-Consider these examples of how embodiment affects intelligence:
+فزیکل AI پہلے ہی متعدد صنعتوں کو تبدیل کر رہا ہے۔ آئیے کچھ اہم اطلاقیے دیکھتے ہیں:
 
-1. **Perspective matters**: A robot with cameras at human eye-level sees the world differently than a floor-cleaning robot
-2. **Capabilities shape understanding**: A robot with hands understands "graspable" objects differently than one without hands
-3. **Constraints drive learning**: A bipedal robot learns about stability and balance through the physics of walking
+### 1. مینوفیکچرنگ اور لا جسٹکس
 
-Physical AI systems don't just *think* about the world—they *experience* it through their sensors and actuators, and this experience shapes their intelligence.
+**ویئر ہاؤس روبوٹس** (Amazon، Ocado):
+- ویئر ہاؤس کے فرش پر خود بخود نیویگیٹ کریں
+- الماریوں سے اشیاء تلاش کریں اور بازیاب کریں
+- انسانی ورکرز کے ساتھ محفوظ طریقے سے تعاون کریں
+- انوینٹری مینجمنٹ کو حقیقی وقت میں بہتر بنائیں
 
-## Real-World Applications of Physical AI
+**اثر**: Amazon کے Kiva روبوٹس نے آپریٹنگ اخراجات میں 20% کمی کی اور ویئر ہاؤس کی گنجائش میں 50% اضافہ کیا۔
 
-Physical AI is already transforming multiple industries. Let's explore some key applications:
+### 2. ہیلتھ کیئر اور امداد
 
-### 1. Manufacturing and Logistics
+**سرجریکل روبوٹس** (da Vinci سرجریکل سسٹم):
+- کم ان ویژن سرجری کے لیے بہتر صداقت فراہم کریں
+- سرجرن کے ہاتھوں کی حرکات کو مائیکرو حرکات میں ترجمہ کریں
+- مریض کی بازیابی کے وقت کو روایتی سرجری کے مقابلے میں 50% کم کریں
 
-**Warehouse Robots** (Amazon, Ocado):
-- Navigate warehouse floors autonomously
-- Locate and retrieve items from shelves
-- Collaborate with human workers safely
-- Optimize inventory management in real-time
+**سینئر کیئر روبوٹس** (PARO، Pepper):
+- دوستانہ ماحول اور جذباتی ساتھ فراہم کریں
+- حیاتیاتی اشارے اور دوا کی پابندی کی نگرانی کریں
+- مو بائل ٹی اور روزمرہ کے کاموں میں مدد کریں
 
-**Impact**: Amazon's Kiva robots reduced operating costs by 20% and increased warehouse capacity by 50%.
+### 3. خود کار گاڑیاں
 
-### 2. Healthcare and Assistance
+**خود کار گاڑیاں** (Waymo، Tesla):
+- اپنے ماحول کو سمجھنے کے لیے کیمرے، LiDAR، اور ریڈار استعمال کریں
+- سٹیرنگ، ایکسلریشن، اور بریکنگ کے بارے میں حقیقی وقت کے فیصلے کریں
+- پیدل، سائیکلوں والے افراد کے ساتھ پیچیدہ شہری ماحول میں نیویگیٹ کریں
 
-**Surgical Robots** (da Vinci Surgical System):
-- Provide enhanced precision for minimally invasive surgery
-- Translate surgeon's hand movements to micro-movements
-- Reduce patient recovery time by 50% compared to traditional surgery
+**موجودہ حیثیت**: 2024 کے مطابق، Waymo فینکس، سان فرانسیسکو، اور لاس اینجلس میں مکمل خود کار ٹیکسیاں چلا رہا ہے، جس میں 1 ملین سے زیادہ رائیڈر صرف سفر مکمل ہوئے ہیں۔
 
-**Eldercare Robots** (PARO, Pepper):
-- Provide companionship and emotional support
-- Monitor vital signs and medication adherence
-- Assist with mobility and daily tasks
+### 4. زراعت
 
-### 3. Autonomous Vehicles
+**خود کار زرعی سامان**:
+- سینٹی میٹر کی سطح پر بیج بوئیں
+- بغیر ہیربی سائیڈ کے weeds کی شناخت اور ہٹائیں
+- کمپیوٹر وژن کا استعمال کرکے فصل کی صحت کی نگرانی کریں
+- روبوٹک بازوؤں کے ساتھ فصل کاٹیں
 
-**Self-Driving Cars** (Waymo, Tesla):
-- Use cameras, LiDAR, and radar to perceive their environment
-- Make real-time decisions about steering, acceleration, and braking
-- Navigate complex urban environments with pedestrians and cyclists
+**اثر**: کیمیکل استعمال میں 90% کمی اور فصل کی پیداوار میں 15-20% اضافہ کرتا ہے۔
 
-**Current Status**: As of 2024, Waymo operates fully autonomous taxis in Phoenix, San Francisco, and Los Angeles, completing over 1 million rider-only trips.
+### 5. ہیومنائڈ سروس روبوٹس
 
-### 4. Agriculture
+**میزبانی اور ریٹیل** (Pepper، Digit):
+- کسٹمرز کا استقبال کریں اور معلومات فراہم کریں
+- عمارتوں کے ذریعے ویزٹرز کی رہنمائی کریں
+- ہوٹل کے کمرے میں اشیاء پہنچائیں
+- ریٹیل اسٹورز میں شیلفس کو بھریں
 
-**Autonomous Farming Equipment**:
-- Plant seeds with centimeter-level precision
-- Identify and remove weeds without herbicides
-- Monitor crop health using computer vision
-- Harvest crops with robotic arms
+**تحقیق اور تلاش** (Boston Dynamics Atlas، NASA Valkyrie):
+- انسانوں کے لیے خطرناک علاقوں میں نیویگیٹ کریں
+- سرچ اینڈ ریسکیو آپریشنز انجام دیں
+- خلائی اسٹیشنز میں ایسٹرونٹس کی مدد کریں
+- انتہائی ماحول میں سائنسی تحقیق کریں
 
-**Impact**: Reduces chemical usage by 90% and increases crop yields by 15-20%.
+## ادراک-عمل کا چکر عمل میں
 
-### 5. Humanoid Service Robots
+چلو ہم فزیکل AI کے کام کرنے کی ایک مثال دیکھتے ہیں: ایک ہیومنائڈ روبوٹ کافی بنانا۔
 
-**Hospitality and Retail** (Pepper, Digit):
-- Greet customers and provide information
-- Guide visitors through buildings
-- Deliver items to hotel rooms
-- Stock shelves in retail stores
+### مرحلہ 1: ادراک
+- **کیمرے** کافی مشین، مگ، اور کافی کے دانوں کی شناخت کرتے ہیں
+- **ڈیپتھ سینسرز** ہر چیز تک فاصلہ ناپتے ہیں
+- **فورس سینسرز** ہاتھ میں ٹیکٹائل فیڈ بیک فراہم کرتے ہیں
 
-**Research and Exploration** (Boston Dynamics Atlas, NASA Valkyrie):
-- Navigate disaster zones too dangerous for humans
-- Perform search and rescue operations
-- Assist astronauts in space stations
-- Conduct scientific research in extreme environments
+### مرحلہ 2: کوگنیشن
+- **آبجیکٹ ریکوگنیشن** "کافی مشین"، "مگ"، "کافی کے دانے" کی شناخت کرتی ہے
+- **ٹاسک پلاننگ** "کافی بنانا" کو ذیلی کاموں میں تقسیم کرتی ہے:
+  1. مگ تھامیں
+  2. کافی مشین کے نیچے مگ رکھیں
+  3. اسٹارٹ بٹن دبائیں
+  4. کافی ڈالنے کا انتظار کریں
+  5. بھرے ہوئے مگ کو ہٹائیں
+- **موشن پلاننگ** رکاوٹوں سے بچنے والے بازو کے راستے کا حساب لگاتی ہے
 
-## The Perception-Action Loop in Practice
+### مرحلہ 3: ایکشن
+- **آرم موٹرز** ہاتھ کو مگ کی پوزیشن پر لے جاتے ہیں
+- **گریپر ایکٹوایٹرز** مگ کے ہینڈل کے گرد بند ہوتے ہیں
+- **ٹورسو موٹرز** اٹھانے کے دوران توازن برقرار رکھتے ہیں
+- **آرم موٹرز** مگ کو کافی مشین کی طرف لے جاتے ہیں
+- **فینگر ایکٹوایٹر** اسٹارٹ بٹن دباتا ہے
 
-Let's walk through a concrete example of how Physical AI works: a humanoid robot making coffee.
+### مرحلہ 4: فیڈ بیک اور ایڈاپٹیشن
+- **کیمرہ** تصدیق کرتا ہے کہ مگ مناسب طور پر مقام یافتہ ہے
+- **فورس سینسرز** کافی کے وزن میں اضافے کا پتہ لگاتے ہیں
+- **وژوئل فیڈ بیک** کافی کے ڈالنا بند ہونے کی تصدیق کرتا ہے
+- **موشن کنٹرولر** ایڈجسٹ گرپ اگر مگ پھسلنا شروع ہو جائے
 
-### Step 1: Perception
-- **Cameras** identify the coffee machine, mug, and coffee beans
-- **Depth sensors** measure distances to each object
-- **Force sensors** in the hand provide tactile feedback
+سینسنگ، سوچنے، اور عمل کا یہ مسلسل چکر ہی ہے جو فزیکل AI کو روایتی AI سے مختلف بنا دیتا ہے۔ روبوٹ صرف *جانتا* نہیں کہ کافی کیسے بنانا ہے - یہ واقعی *بنا* دیتا ہے، حقیقی دنیا کے مطابق ایڈاپٹ ہوتے ہوئے۔
 
-### Step 2: Cognition
-- **Object recognition** identifies "coffee machine," "mug," "coffee beans"
-- **Task planning** breaks down "make coffee" into sub-tasks:
-  1. Grasp mug
-  2. Place mug under coffee machine
-  3. Press start button
-  4. Wait for coffee to pour
-  5. Remove filled mug
-- **Motion planning** calculates arm trajectories that avoid collisions
+## فزیکل AI کے منفرد چیلنج
 
-### Step 3: Action
-- **Arm motors** move hand to mug position
-- **Gripper actuators** close around mug handle
-- **Torso motors** maintain balance while lifting
-- **Arm motors** move mug to coffee machine
-- **Finger actuator** presses start button
+فزیکل AI کو ایسے چیلنج درپیش ہیں جو روایتی AI میں نہیں ہوتے:
 
-### Step 4: Feedback & Adaptation
-- **Camera** confirms mug is properly positioned
-- **Force sensors** detect coffee weight increasing
-- **Visual feedback** confirms coffee has stopped pouring
-- **Motion controller** adjusts grip if mug starts to slip
+### 1. سینسر کی عدم یقینی
+حقیقی دنیا کے سینسر شوری اور ناکامل ہوتے ہیں۔ ایک کیمرہ کم روشنی کی وجہ سے کوئی چیز کو غلط پہچان سکتا ہے۔ LiDAR عکاسی سطحوں سے الجھ سکتا ہے۔ فزیکل AI کو اس عدم یقینی کو سلیقے سے سنبھالنا چاہیے۔
 
-This continuous loop of sensing, thinking, and acting is what makes Physical AI different from traditional AI. The robot doesn't just *know* how to make coffee—it actually *does* it, adapting to the real world in real-time.
+### 2. حقیقی وقت کی پابندیاں
+جب ایک روبوٹ دیوار سے ٹکرانے والا ہوتا ہے، تو اسے ملی سیکنڈز میں ری ایکٹ کرنے کی ضرورت ہوتی ہے - سیکنڈز میں نہیں۔ فزیکل AI سسٹم کو محفوظ ہونے کے لیے فیصلے کافی تیز کرنے چاہئیں۔
 
-## Challenges Unique to Physical AI
+### 3. سیفٹی اور قابل اعتمادی
+سپیم فلٹر میں ایک بگ تکلیف دہ ہے۔ سرجریکل روبوٹ میں ایک بگ جان لیوا ہے۔ فزیکل AI کو سخت ٹیسٹنگ اور فیل سیف میکانزم کی ضرورت ہوتی ہے۔
 
-Physical AI faces challenges that don't exist in traditional AI:
+### 4. سیم ٹو ریئل گیپ
+سیمولیشن میں تربیت یافتہ AI سسٹم اکثر حقیقی دنیا میں ناکام ہو جاتے ہیں کیونکہ سیمولیشن فزیکل حقیقت کی ہر تفصیل کو نہیں پکڑ سکتے۔ سیمولیشن سے حقیقت تک سیکھے گئے رویوں کو منتقل کرنا ایک بڑا تحقیقی چیلنج ہے۔
 
-### 1. Sensor Uncertainty
-Real-world sensors are noisy and imperfect. A camera might misidentify an object due to poor lighting. LiDAR can be confused by reflective surfaces. Physical AI must handle this uncertainty gracefully.
+### 5. جنرلائزیشن
+روایتی AI کو انٹرنیٹ سے ڈاؤن لوڈ کی گئی لاکھوں تصاویر پر تربیت دی جا سکتی ہے۔ فزیکل AI کو حقیقی دنیا کے تعاملات سے سیکھنا ہوتا ہے، جو وقت لگنے والے اور مہنگے ہوتے ہیں۔
 
-### 2. Real-Time Constraints
-When a robot is about to collide with a wall, it needs to react in milliseconds—not seconds. Physical AI systems must make decisions fast enough to be safe.
+## انٹیگریشن: اس کتاب کے تناظر میں فزیکل AI
 
-### 3. Safety and Reliability
-A bug in a spam filter is annoying. A bug in a surgical robot is life-threatening. Physical AI requires rigorous testing and fail-safe mechanisms.
+اب جب کہ آپ سمجھ گئے ہیں کہ فزیکل AI کیا ہے، آپ اس کی سب سے جرأت مندانہ ایپلی کیشن - **ہیومنائڈ روبوٹس** - کی تلاش کے لیے تیار ہیں۔
 
-### 4. The Sim-to-Real Gap
-AI systems trained in simulation often fail in the real world because simulations can't capture every detail of physical reality. Transferring learned behaviors from simulation to reality is a major research challenge.
+ہیومنائڈ روبوٹس فزیکل AI سسٹم ہیں جو انسان نما جسم کے ساتھ ڈیزائن کیے گئے ہیں۔ وہ ہم نے تین ستونوں کو اجاگر کرتے ہیں:
+- **ادراک**: آنکھوں کے لیے کیمرے، کانوں کے لیے مائیکروفون، ہاتھوں میں چھوٹ کے سینسرز
+- **کوگنیشن**: وژن، زبان کی سمجھ، اور فیصلہ سازی کے لیے AI ماڈلز
+- **ایکشن**: چلنے، تھامنے، اور ہیرا پھیری کے قابل بنانے والے موٹر اور ایکٹویٹرز
 
-### 5. Generalization
-Traditional AI can be trained on millions of images downloaded from the internet. Physical AI must learn from real-world interactions, which are time-consuming and expensive to collect.
+اس کتاب کے دوران، آپ سیکھیں گے کہ ہر کمپوننٹ کیسے کام کرتا ہے:
+- **حصہ 2، ماڈیول 1** آپ کو دکھائے گا کہ ROS 2 سینسرز، AI ماڈلز، اور ایکٹویٹرز کے درمیان کمیونیکیشن کیسے ممکن بناتا ہے
+- **حصہ 2، ماڈیول 2** آپ کو سکھائے گا کہ مجازی ماحول میں فزیکل AI کو کیسے سیمولیٹ کیا جاتا ہے
+- **حصہ 2، ماڈیول 3** NVIDIA Isaac کا تعارف کرائے گا، فزیکل AI سسٹم تربیت دینے کے لیے ایک پلیٹ فارم
+- **حصہ 2، ماڈیول 4** دکھائے گا کہ زبان کے ماڈلز ہیومنائڈز کو قدرتی زبان کمانڈز کو سمجھنے اور عمل کرنے کے قابل کیسے بناتے ہیں
 
-## Integration: Physical AI in the Context of This Book
+اس کتاب کے اختتام تک، آپ اس بات کو سمجھنے کے قابل ہوں گے کہ ایک ہیومنائڈ روبوٹ کو ڈیزائن، سیمولیٹ، اور کنٹرول کیسے کیا جائے جو مادی دنیا کا ادراک کر سکے، سوچ سکے، اور اس میں عمل کر سکے۔
 
-Now that you understand what Physical AI is, you're ready to explore one of its most ambitious applications: **humanoid robots**.
+## سوالات اور جوابات
 
-Humanoid robots are Physical AI systems designed with human-like bodies. They embody all three pillars we discussed:
-- **Perception**: Cameras for eyes, microphones for ears, touch sensors in hands
-- **Cognition**: AI models for vision, language understanding, and decision-making
-- **Action**: Motors and actuators that enable walking, grasping, and manipulation
+**س: کیا فزیکل AI اور روبوٹکس ایک جیسے ہیں؟**
 
-Throughout this book, you'll learn how each component works:
-- **Part 2, Module 1** will show you how ROS 2 enables communication between sensors, AI models, and actuators
-- **Part 2, Module 2** will teach you how to simulate Physical AI in virtual environments
-- **Part 2, Module 3** will introduce NVIDIA Isaac, a platform for training Physical AI systems
-- **Part 2, Module 4** will explore how language models enable humanoids to understand and execute natural language commands
+ج: نہیں بالکل۔ روبوٹکس روبوٹس کی تعمیر اور آپریشن کا وسیع شعبہ ہے۔ فزیکل AI خاص طور پر AI کا استعمال کرتا ہے تاکہ روبوٹس (اور دیگر مادی سسٹم) ادراک، سمجھ، اور خود بخود عمل کر سکیں۔ ایک ریموٹ کنٹرول والے روبوٹ روبوٹکس ہے لیکن فزیکل AI نہیں ہے۔ ایک خود کار ویکیوم کلینر دونوں روبوٹکس *اور* فزیکل AI ہے۔
 
-By the end of this book, you'll understand how to design, simulate, and control a humanoid robot that perceives, thinks, and acts in the physical world.
+**س: کیا فزیکل AI مشین لرننگ کے بغیر کام کر سکتا ہے؟**
 
-## Questions and Answers
+ج: ہاں، لیکن محدودیت کے ساتھ۔ ابتدائی روبوٹس نے ادراک اور فیصلہ سازی کے لیے ہاتھ سے لکھے گئے قواعد استعمال کیے (جیسے، "اگر سینسر 10 سینٹی میٹر کے اندر رکاوٹ کا پتہ چلے، تو رک جائیں")۔ جدید فزیکل AI پیچیدہ، غیر متوقع ماحول کو سنبھالنے کے لیے مشین لرننگ استعمال کرتا ہے جسے دستی طور پر پروگرام نہیں کیا جا سکتا۔ مشین لرننگ فزیکل AI کو جنرلائز اور ایڈاپٹ کرنے کے قابل بناتا ہے۔
 
-**Q: Is Physical AI the same as robotics?**
+**س: ہمیں خاص طور پر ہیومنائڈ روبوٹس کیوں چاہئیں؟ کیا چکر والے روبوٹس زیادہ کارآمد نہیں ہیں؟**
 
-A: Not exactly. Robotics is the broader field of building and operating robots. Physical AI specifically refers to using artificial intelligence to enable robots (and other physical systems) to perceive, reason, and act autonomously. A remote-controlled robot is robotics but not Physical AI. An autonomous vacuum cleaner is both robotics *and* Physical AI.
+ج: چکر والے روبوٹس بے شک بہت سے کاموں کے لیے زیادہ کارآمد ہیں۔ تاہم، ہیومنائڈ روبوٹس انسانوں کے لیے ڈیزائن کردہ ماحول میں کام کر سکتے ہیں (سیڑھیاں، دروازے کے ہینڈل، ٹولز)۔ وہ انسانوں کے ساتھ زیادہ قدرتی طور پر بات چیت کر سکتے ہیں اور ماحولیاتی تبدیلیوں کی ضرورت کے بغیر وسیع تر کام کر سکتے ہیں۔ ہم اسے چیپٹر 2 میں مزید تلاش کریں گے۔
 
-**Q: Can Physical AI work without machine learning?**
+**س: فزیکل AI اور IoT (انٹرنیٹ آف تھنگز) میں کیا فرق ہے؟**
 
-A: Yes, but with limitations. Early robots used hand-coded rules for perception and decision-making (e.g., "if sensor detects obstacle within 10cm, stop"). Modern Physical AI uses machine learning to handle complex, unpredictable environments that are impossible to program manually. Machine learning enables Physical AI to generalize and adapt.
+ج: IoT آلات سینسر ڈیٹا جمع کرتے ہیں اور سادہ اعمال انجام دیتے ہیں (جیسے ایک اسمارٹ تھرمو سٹیٹ)، لیکن وہ عام طور پر خودکار فیصلے کرنے یا اپنا برتاؤ ایڈاپٹ کرنے کے لیے AI استعمال نہیں کرتے۔ فزیکل AI سسٹم پیچیدہ ماحول کو سمجھنے، ذہیں فیصلے کرنے، اور جامع مادی اعمال انجام دینے کے لیے AI استعمال کرتے ہیں۔ ایک IoT ٹمپریچر سینسر ڈیٹا بھیجتا ہے؛ ایک فزیکل AI روبوٹ اس ڈیٹا کو استعمال کرتا ہے تاکہ فیصلہ کرے کہ کیا دروازہ کھولنا ہے۔
 
-**Q: Why do we need humanoid robots specifically? Aren't wheeled robots more efficient?**
+**س: کیا فزیکل AI محفوظ ہے؟**
 
-A: Wheeled robots are indeed more efficient for many tasks. However, humanoid robots can operate in environments designed for humans (stairs, doorknobs, tools). They can also interact more naturally with people and perform a wider variety of tasks without requiring environmental modifications. We'll explore this more in Chapter 2.
+ج: سیفٹی ایک اہم تشویش ہے۔ فزیکل AI سسٹم کو وسیع ٹیسٹنگ، فیل سیف میکانزم، اور سیفٹی معیارات کو اپنانے کی ضرورت ہوتی ہے (جیسے ذاتی دیکھ بھال روبوٹس کے لیے ISO 13482)۔ جدید سسٹم متعدد سیفٹی کی تہوں کا استعمال کرتے ہیں: متبادل سینسرز، ایمرجنسی سٹاپ میکانزم، فورس لمیٹڈ ایکٹویٹرز، اور سیفٹی کو ترجیح دینے والے AI ماڈلز۔ تاہم، کسی بھی ٹیکنالوجی کی طرح، خطرات موجود ہیں، اور جاری تحقیق فزیکل AI کو مزید محفوظ اور قابل اعتماد بنانے پر توجہ مرکوز کرتی ہے۔
 
-**Q: What's the difference between Physical AI and IoT (Internet of Things)?**
+## دیگر ماڈیولز سے ربط
 
-A: IoT devices collect sensor data and perform simple actions (like a smart thermostat), but they typically don't use AI to make autonomous decisions or adapt their behavior. Physical AI systems use AI to perceive complex environments, make intelligent decisions, and perform sophisticated physical actions. An IoT temperature sensor sends data; a Physical AI robot uses that data to decide whether to open a window.
+- **چیپٹر 2** ہیومنائڈ روبوٹس کو ایک خاص ایمبیڈمنٹ کے طور پر تلاش کرے گا فزیکل AI کے اصولوں کا
+- **چیپٹر 3** یہ وضاحت کرے گا کہ ایمبیڈڈ انٹیلی جنس AI کی ترقی کے لیے کیوں اہم ہے
+- **ماڈیول 1 (چیپٹر 4-7)** ROS 2 میں گہرائی سے جائے گا، وہ مڈل ویئر جو فزیکل AI سسٹم کو ادراک، کوگنیشن، اور ایکشن کو مربوط کرنے کی اجازت دیتا ہے
+- **ماڈیول 3 (چیپٹر 12-15)** دکھائے گا کہ NVIDIA Isaac فزیکل AI کو سیمولیشن، ادراک، اور لرننگ کے ذریعے کیسے ممکن بناتا ہے
+- **ماڈیول 4 (چیپٹر 16-19)** یہ دکھائے گا کہ وژن-زبان-ایکشن ماڈلز فزیکل AI کے جدید ترین کو کیسے نمائندہ بناتے ہیں
 
-**Q: Is Physical AI safe?**
+## خلاصہ
 
-A: Safety is a critical concern. Physical AI systems require extensive testing, fail-safe mechanisms, and adherence to safety standards (like ISO 13482 for personal care robots). Modern systems use multiple layers of safety: redundant sensors, emergency stop mechanisms, force-limited actuators, and AI models trained to prioritize safety. However, as with any technology, risks exist, and ongoing research focuses on making Physical AI safer and more reliable.
+فزیکل AI معلومات پروسیس کرنے والے AI سے ایک نمونہ تبدیلی کی نمائندگی کرتا ہے جو مادی دنیا کے ساتھ بات چیت کرتا ہے۔ اس چیپٹر کے کلیدی نکات:
 
-## Connections to Other Modules
+1. **فزیکل AI = ایمبیڈڈ AI**: ذہانت جو مادی دنیا کا ادراک، سمجھ، اور اس کے ساتھ عمل کرتی ہے
+2. **تین ستون**: ادراک (سینسنگ)، کوگنیشن (ریزننگ)، اور ایکشن (بہشت چیت)
+3. **ادراک-ایکشن لوپ**: مشاہدہ کرنے، فیصلہ کرنے، کام کرنے، اور ایڈاپٹ کرنے کا مسلسل چکر
+4. **ایمبیڈمنٹ اہم ہے**: جسمانی شکل اس بات کو شکل دیتی ہے کہ AI کیسے سیکھ سکتا ہے
+5. **حقیقی دنیا کے اطلاقیے**: پہلے ہی مینوفیکچرنگ، ہیلتھ کیئر، ٹرانسپورٹیشن، زراعت، اور سروس انڈسٹریز کو تبدیل کر رہا ہے
+6. **منفرد چیلنج**: سینسر عدم یقینی، حقیقی وقت کی پابندیاں، سیفٹی تقاضے، سیم ٹو ریل گیپ، اور محدود تربیتی ڈیٹا
 
-- **Chapter 2** will explore humanoid robots as a specific embodiment of Physical AI principles
-- **Chapter 3** will explain why embodied intelligence matters for advancing AI
-- **Module 1 (Chapters 4-7)** will dive into ROS 2, the middleware that enables Physical AI systems to coordinate perception, cognition, and action
-- **Module 3 (Chapters 12-15)** will show you how NVIDIA Isaac enables Physical AI through simulation, perception, and learning
-- **Module 4 (Chapters 16-19)** will demonstrate how Vision-Language-Action models represent the cutting edge of Physical AI
+فزیکل AI سائنس فکشن نہیں ہے - یہ آج موجود ہے، ویئر ہاؤس روبوٹس، سرجریکل اسسٹنٹس، خود کار گاڑیاں، اور تیزی سے جامع ہیومنائڈ روبوٹس کو طاقت دے رہا ہے۔ جیسے جیسے آپ اس کتاب کے ذریعے آگے بڑھیں گے، آپ اس بات کو سمجھنے کے لیے علم حاصل کریں گے کہ وہ فزیکل AI سسٹم ڈیزائن، سیمولیٹ، اور بنائیں جو ہماری پیچیدہ مادی دنیا میں ادراک، سوچ، اور عمل کر سکیں۔
 
-## Summary
+## حوالہ جات
 
-Physical AI represents a paradigm shift from AI that processes information to AI that interacts with the physical world. The key takeaways from this chapter:
+1. Brooks, R. A. (1991). "ذہانت بغیر نمائندگی کے." *مصنوعی ذہانت*، 47(1-3)، 139-159۔
+   - ایمبیڈڈ انٹیلی جنس اور برتاؤ پر مبنی روبوٹکس پر بنیادی مقالہ
 
-1. **Physical AI = Embodied AI**: Intelligence that perceives, reasons about, and acts in the physical world through a physical body
-2. **Three Pillars**: Perception (sensing), Cognition (reasoning), and Action (interacting)
-3. **Perception-Action Loop**: Continuous cycle of observing, deciding, acting, and adapting
-4. **Embodiment Matters**: The physical form shapes what and how an AI system can learn
-5. **Real-World Applications**: Already transforming manufacturing, healthcare, transportation, agriculture, and service industries
-6. **Unique Challenges**: Sensor uncertainty, real-time constraints, safety requirements, sim-to-real gap, and limited training data
+2. Pfeifer, R., & Bongard, J. (2006). *کیسے جسم ہم سوچنے کا طریقہ تشکیل دیتا ہے: ذہانت کا ایک نیا نقطہ نظر*. MIT پریس۔
+   - AI اور روبوٹکس میں ایمبیڈمنٹ کے تصور کی جامع تلاش
 
-Physical AI is not science fiction—it's here today, powering warehouse robots, surgical assistants, autonomous vehicles, and increasingly sophisticated humanoid robots. As you continue through this book, you'll gain the knowledge to understand, design, and build Physical AI systems that can perceive, think, and act in our complex physical world.
+3. Bohg, J., وغیرہ (2014). "ڈیٹا سے گریب سنٹھیسس - ایک سروے." *IEEE روبوٹکس ٹرانزیکشنز*، 30(2)، 289-309۔
+   - ڈیٹا کے ذریعے فزیکل AI کو مینیپولیشن سیکھنے کا جائزہ
 
-## References
+4. Levine, S., وغیرہ (2018). "روبوٹک گریب کے لیے ہاتھ-آنکھ کوآرڈی نیشن کے لیے مشین لرننگ اور بڑے پیمانے پر ڈیٹا کلیکشن کا استعمال." *انٹرنیشنل جرنل آف روبوٹکس ریسرچ*، 37(4-5)، 421-436۔
+   - فزیکل AI کے جدید مشین لرننگ کے نقطہ نظر کو ظاہر کرتا ہے
 
-1. Brooks, R. A. (1991). "Intelligence without representation." *Artificial Intelligence*, 47(1-3), 139-159.
-   - Foundational paper on embodied intelligence and behavior-based robotics
+5. Kober, J., Bagnell, J. A., & Peters, J. (2013). "روبوٹکس میں رینفورسمنٹ لرننگ: ایک سروے." *انٹرنیشنل جرنل آف روبوٹکس ریسرچ*، 32(11)، 1238-1274۔
+   - فزیکل AI سسٹم کے لیے لرننگ کے طریقوں کا سروے
 
-2. Pfeifer, R., & Bongard, J. (2006). *How the Body Shapes the Way We Think: A New View of Intelligence*. MIT Press.
-   - Comprehensive exploration of the embodiment hypothesis in AI and robotics
+6. NVIDIA. (2024). "Isaac Sim پلیٹ فارم دستاویزات." https://docs.omniverse.nvidia.com/isaacsim/latest/index.html
+   - فزیکل AI سیمولیشن پلیٹ فارم کے لیے سرکاری دستاویزات
 
-3. Bohg, J., et al. (2014). "Data-Driven Grasp Synthesis—A Survey." *IEEE Transactions on Robotics*, 30(2), 289-309.
-   - Overview of how Physical AI learns manipulation through data
+7. Waymo LLC. (2024). "Waymo سیفٹی رپورٹ." https://waymo.com/safety/
+   - خود کار گاڑی فزیکل AI کے لیے حقیقی دنیا کا اطلاقیہ ڈیٹا
 
-4. Levine, S., et al. (2018). "Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection." *The International Journal of Robotics Research*, 37(4-5), 421-436.
-   - Demonstrates modern machine learning approaches to Physical AI
-
-5. Kober, J., Bagnell, J. A., & Peters, J. (2013). "Reinforcement learning in robotics: A survey." *The International Journal of Robotics Research*, 32(11), 1238-1274.
-   - Survey of learning methods for Physical AI systems
-
-6. NVIDIA. (2024). "Isaac Sim Platform Documentation." https://docs.omniverse.nvidia.com/isaacsim/latest/index.html
-   - Official documentation for Physical AI simulation platform
-
-7. Waymo LLC. (2024). "Waymo Safety Report." https://waymo.com/safety/
-   - Real-world deployment data for autonomous vehicle Physical AI
-
-8. Boston Dynamics. (2024). "Atlas: The World's Most Dynamic Humanoid Robot." https://www.bostondynamics.com/atlas
-   - Technical overview of advanced humanoid Physical AI system
+8. Boston Dynamics. (2024). "Atlas: دنیا کا سب سے متحرک ہیومنائڈ روبوٹ." https://www.bostondynamics.com/atlas
+   - جدید ترین ہیومنائڈ فزیکل AI سسٹم کا تکنیکی جائزہ
 
 ---
 
-**Next Chapter**: Chapter 2 will build on this foundation by exploring humanoid robots specifically—why we build them, how they differ from other robots, and what makes them the most sophisticated form of Physical AI.
+**اگلا چیپٹر**: چیپٹر 2 اس بنیاد پر کام کرے گا اور خاص طور پر ہیومنائڈ روبوٹس کی تلاش کرے گا - ہم انہیں کیوں بناتے ہیں، وہ دیگر روبوٹس سے کیسے مختلف ہیں، اور وہ فزیکل AI کی سب سے جامع شکل کیوں ہیں۔

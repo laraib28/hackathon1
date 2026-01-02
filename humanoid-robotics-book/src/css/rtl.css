@@ -3,41 +3,51 @@
 /* Keep code blocks LTR even in RTL pages */
 [dir="rtl"] pre,
 [dir="rtl"] code,
-[dir="rtl"] .prism-code {
+[dir="rtl"] .prism-code,
+.rtl pre,
+.rtl code,
+.rtl .prism-code {
   direction: ltr;
   text-align: left;
 }
 
 /* Keep URLs LTR */
 [dir="rtl"] a[href^="http"],
-[dir="rtl"] a[href^="https"] {
+[dir="rtl"] a[href^="https"],
+.rtl a[href^="http"],
+.rtl a[href^="https"] {
   direction: ltr;
   display: inline-block;
 }
 
 /* Adjust sidebar for RTL */
-[dir="rtl"] .theme-doc-sidebar-container {
+[dir="rtl"] .theme-doc-sidebar-container,
+.rtl .theme-doc-sidebar-container {
   border-left: none;
   border-right: 1px solid var(--ifm-toc-border-color);
 }
 
 /* Fix navbar alignment */
-[dir="rtl"] .navbar__items--right {
+[dir="rtl"] .navbar__items--right,
+.rtl .navbar__items--right {
   flex-direction: row-reverse;
 }
 
-[dir="rtl"] .navbar__items--left {
+[dir="rtl"] .navbar__items--left,
+.rtl .navbar__items--left {
   flex-direction: row-reverse;
 }
 
 /* Adjust pagination buttons */
-[dir="rtl"] .pagination-nav__link--next .pagination-nav__label::after {
+[dir="rtl"] .pagination-nav__link--next .pagination-nav__label::after,
+.rtl .pagination-nav__link--next .pagination-nav__label::after {
   content: '←';
   margin-right: 0.5rem;
   margin-left: 0;
 }
 
-[dir="rtl"] .pagination-nav__link--prev .pagination-nav__label::before {
+[dir="rtl"] .pagination-nav__link--prev .pagination-nav__label::before,
+.rtl .pagination-nav__link--prev .pagination-nav__label::before {
   content: '→';
   margin-left: 0.5rem;
   margin-right: 0;
@@ -45,22 +55,27 @@
 
 /* Fix breadcrumbs */
 [dir="rtl"] .breadcrumbs__link,
-[dir="rtl"] .breadcrumbs__item {
+[dir="rtl"] .breadcrumbs__item,
+.rtl .breadcrumbs__link,
+.rtl .breadcrumbs__item {
   direction: rtl;
 }
 
 /* Adjust menu icons */
-[dir="rtl"] .menu__link--sublist-caret:after {
+[dir="rtl"] .menu__link--sublist-caret:after,
+.rtl .menu__link--sublist-caret:after {
   transform: scaleX(-1);
 }
 
 /* Fix dropdown menus */
-[dir="rtl"] .dropdown > .navbar__link:after {
+[dir="rtl"] .dropdown > .navbar__link:after,
+.rtl .dropdown > .navbar__link:after {
   transform: scaleX(-1);
 }
 
 /* Adjust table of contents */
-[dir="rtl"] .table-of-contents {
+[dir="rtl"] .table-of-contents,
+.rtl .table-of-contents {
   border-left: none;
   border-right: 1px solid var(--ifm-toc-border-color);
   padding-left: 0;
@@ -68,7 +83,8 @@
 }
 
 /* Fix search box */
-[dir="rtl"] .navbar__search-input {
+[dir="rtl"] .navbar__search-input,
+.rtl .navbar__search-input {
   padding-left: 0.5rem;
   padding-right: 2rem;
 }

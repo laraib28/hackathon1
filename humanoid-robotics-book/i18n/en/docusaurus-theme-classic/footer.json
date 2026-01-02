@@ -1,0 +1,58 @@
+{
+  "link.title.Book Content": {
+    "message": "Book Content",
+    "description": "The title of the footer links column with title=Book Content in the footer"
+  },
+  "link.title.Advanced Topics": {
+    "message": "Advanced Topics",
+    "description": "The title of the footer links column with title=Advanced Topics in the footer"
+  },
+  "link.title.Resources": {
+    "message": "Resources",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.item.label.Foundations": {
+    "message": "Foundations",
+    "description": "The label of footer link with label=Foundations linking to /part1-foundations/intro"
+  },
+  "link.item.label.ROS 2 Basics": {
+    "message": "ROS 2 Basics",
+    "description": "The label of footer link with label=ROS 2 Basics linking to /part2-modules/module1-ros2/chapter-04-introduction-to-ros2"
+  },
+  "link.item.label.Digital Twin": {
+    "message": "Digital Twin",
+    "description": "The label of footer link with label=Digital Twin linking to /part2-modules/module2-digital-twin/chapter-08-what-is-digital-twin"
+  },
+  "link.item.label.Isaac Platform": {
+    "message": "Isaac Platform",
+    "description": "The label of footer link with label=Isaac Platform linking to /part2-modules/module3-isaac/chapter-12-introduction-nvidia-isaac"
+  },
+  "link.item.label.VLA Models": {
+    "message": "VLA Models",
+    "description": "The label of footer link with label=VLA Models linking to /part2-modules/module4-vla/chapter-16-what-is-vla"
+  },
+  "link.item.label.System Architecture": {
+    "message": "System Architecture",
+    "description": "The label of footer link with label=System Architecture linking to /part3-capstone/chapter-20-complete-architecture"
+  },
+  "link.item.label.Career Paths": {
+    "message": "Career Paths",
+    "description": "The label of footer link with label=Career Paths linking to /part4-future/chapter-24-career-paths"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/laraib28/hackathon1"
+  },
+  "link.item.label.ROS 2 Docs": {
+    "message": "ROS 2 Docs",
+    "description": "The label of footer link with label=ROS 2 Docs linking to https://docs.ros.org/en/humble/"
+  },
+  "link.item.label.NVIDIA Isaac": {
+    "message": "NVIDIA Isaac",
+    "description": "The label of footer link with label=NVIDIA Isaac linking to https://developer.nvidia.com/isaac-ros"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 Humanoid Robotics & Physical AI",
+    "description": "The footer copyright"
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from '@docusaurus/router';
+import { useHistory, useLocation } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 const API_BASE = process.env.NODE_ENV === 'production'
@@ -23,6 +23,24 @@ export default function EnhancedSignup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const location = useLocation();
+
+  // Function to get locale-aware URL
+  const getLocaleAwareUrl = (path: string): string => {
+    const currentPath = location.pathname;
+    // Check if we're currently on a Urdu page (starts with /ur/)
+    if (currentPath.startsWith('/ur/')) {
+      return `/ur${path}`;
+    }
+    // Check if we're on the root Urdu page
+    if (currentPath === '/ur' || currentPath.startsWith('/ur?') || currentPath.startsWith('/ur#')) {
+      // For signup/login from Urdu root, return to Urdu version
+      if (path === '/signup') return '/ur/signup';
+      if (path === '/login') return '/ur/login';
+      return `/ur${path}`;
+    }
+    return path;
+  };
 
   const programmingLanguages = [
     'Python', 'JavaScript', 'TypeScript', 'C++', 'Java',
@@ -341,7 +359,7 @@ export default function EnhancedSignup() {
 
         <div className={styles.authFooter}>
           Already have an account?{' '}
-          <a href="/login" className={styles.authLink}>
+          <a href={getLocaleAwareUrl('/login')} className={styles.authLink}>
             Sign in
           </a>
         </div>

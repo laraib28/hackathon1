@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from '@docusaurus/router';
 import styles from './ChapterControls.module.css';
 
 const API_BASE = process.env.NODE_ENV === 'production'
@@ -21,6 +22,7 @@ export default function ChapterControls({
   const [isTranslated, setIsTranslated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [originalContent, setOriginalContent] = useState(content);
+  const location = useLocation();
 
   useEffect(() => {
     // Load user data from localStorage
@@ -28,7 +30,48 @@ export default function ChapterControls({
     if (userData) {
       setUser(JSON.parse(userData));
     }
-  }, []);
+
+    // Load translation state from localStorage
+    const savedTranslationState = localStorage.getItem(`translation_state_${chapterId}`);
+    if (savedTranslationState) {
+      const { isTranslated: savedIsTranslated, translatedContent } = JSON.parse(savedTranslationState);
+      if (savedIsTranslated && translatedContent) {
+        setIsTranslated(savedIsTranslated);
+        if (onContentUpdate) {
+          onContentUpdate(translatedContent);
+        }
+      }
+    }
+
+    // Load personalization state from localStorage
+    const savedPersonalizationState = localStorage.getItem(`personalization_state_${chapterId}`);
+    if (savedPersonalizationState) {
+      const { isPersonalized: savedIsPersonalized, personalizedContent } = JSON.parse(savedPersonalizationState);
+      if (savedIsPersonalized && personalizedContent) {
+        setIsPersonalized(savedIsPersonalized);
+        if (onContentUpdate) {
+          onContentUpdate(personalizedContent);
+        }
+      }
+    }
+  }, [chapterId, onContentUpdate]);
+
+  // Function to get locale-aware URL
+  const getLocaleAwareUrl = (path: string): string => {
+    const currentPath = location.pathname;
+    // Check if we're currently on a Urdu page (starts with /ur/)
+    if (currentPath.startsWith('/ur/')) {
+      return `/ur${path}`;
+    }
+    // Check if we're on the root Urdu page
+    if (currentPath === '/ur' || currentPath.startsWith('/ur?') || currentPath.startsWith('/ur#')) {
+      // For signup/login from Urdu root, return to Urdu version
+      if (path === '/signup') return '/ur/signup';
+      if (path === '/login') return '/ur/login';
+      return `/ur${path}`;
+    }
+    return path;
+  };
 
   const handlePersonalize = async () => {
     if (!user) {
@@ -62,6 +105,13 @@ export default function ChapterControls({
         if (onContentUpdate) {
           onContentUpdate(data.personalized_content);
         }
+        // Save personalization state to localStorage
+        const personalizationState = {
+          isPersonalized: true,
+          personalizedContent: data.personalized_content
+        };
+        localStorage.setItem(`personalization_state_${chapterId}`, JSON.stringify(personalizationState));
+
         // Optionally, re-render the page with new content
         alert('✅ Content personalized based on your background!');
       } else {
@@ -95,10 +145,19 @@ export default function ChapterControls({
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setIsTranslated(!isTranslated);
+        const newIsTranslated = !isTranslated;
+        setIsTranslated(newIsTranslated);
         if (onContentUpdate) {
           onContentUpdate(data.translated_text);
         }
+
+        // Save translation state to localStorage
+        const translationState = {
+          isTranslated: newIsTranslated,
+          translatedContent: newIsTranslated ? data.translated_text : null
+        };
+        localStorage.setItem(`translation_state_${chapterId}`, JSON.stringify(translationState));
+
         alert(`✅ Content ${isTranslated ? 'restored to English' : 'translated to Urdu'}!`);
       } else {
         throw new Error('Translation failed');
@@ -117,6 +176,9 @@ export default function ChapterControls({
     if (onContentUpdate) {
       onContentUpdate(originalContent);
     }
+    // Clear translation and personalization states from localStorage
+    localStorage.removeItem(`translation_state_${chapterId}`);
+    localStorage.removeItem(`personalization_state_${chapterId}`);
     alert('✅ Content reset to original!');
   };
 
@@ -179,8 +241,8 @@ export default function ChapterControls({
         {!user && (
           <div className={styles.loginPrompt}>
             <p>
-              <a href="/signup" className={styles.loginLink}>Sign up</a> or{' '}
-              <a href="/login" className={styles.loginLink}>log in</a> to personalize content based on your background!
+              <a href={getLocaleAwareUrl('/signup')} className={styles.loginLink}>Sign up</a> or{' '}
+              <a href={getLocaleAwareUrl('/login')} className={styles.loginLink}>log in</a> to personalize content based on your background!
             </p>
           </div>
         )}

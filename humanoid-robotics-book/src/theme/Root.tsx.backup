@@ -1,0 +1,163 @@
+import React, { useEffect, useState, useRef } from 'react';
+import type { Props } from '@theme/Root';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+import { AuthProvider } from '../context/AuthContext';
+import ProtectedRoute from '../components/ProtectedRoute';
+import ChatWidget from '../components/ChatWidget/ChatWidget';
+
+export default function Root({ children }: Props) {
+  return (
+    <BrowserOnly>
+      {() => <RootInner>{children}</RootInner>}
+    </BrowserOnly>
+  );
+}
+
+function RootInner({ children }: { children: React.ReactNode }) {
+  const [pathname, setPathname] = useState('/');
+  const pathnameRef = useRef('/');
+  const [selectedText, setSelectedText] = useState('');
+  const [showAskButton, setShowAskButton] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // Function to update pathname
+    const updatePathname = () => {
+      const newPathname = window.location.pathname;
+      // Only update if the pathname actually changed
+      if (newPathname !== pathnameRef.current) {
+        setPathname(newPathname);
+        pathnameRef.current = newPathname; // Update ref synchronously
+      }
+    };
+
+    // Initial pathname setting
+    updatePathname();
+
+    // Listen for URL changes to update pathname
+    const handlePopState = () => {
+      updatePathname();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Also listen for hash changes
+    const handleHashChange = () => {
+      updatePathname();
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []); // Empty dependency array to run only once
+
+  // Check for locale in pathname - Docusaurus typically serves Urdu content at /ur/ paths
+  const currentLocale = pathname.startsWith('/ur') ? 'ur' : 'en';
+
+  // RTL + language handling
+  useEffect(() => {
+    if (currentLocale === 'ur') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ur-PK'; // Use full locale code
+      document.body.classList.add('rtl');
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = 'en-US'; // Use full locale code
+      document.body.classList.remove('rtl');
+    }
+  }, [currentLocale]);
+
+  // Text selection logic
+  useEffect(() => {
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+      const text = selection?.toString().trim() || '';
+
+      if (text) {
+        const range = selection?.getRangeAt(0);
+        const rect = range?.getBoundingClientRect();
+
+        if (rect) {
+          setSelectedText(text);
+          setButtonPosition({
+            x: rect.right + window.scrollX + 10,
+            y: rect.bottom + window.scrollY + 5,
+          });
+          setShowAskButton(true);
+        }
+      } else {
+        setShowAskButton(false);
+      }
+    };
+
+    document.addEventListener('selectionchange', handleSelectionChange);
+    document.addEventListener('mouseup', handleSelectionChange);
+
+    return () => {
+      document.removeEventListener('selectionchange', handleSelectionChange);
+      document.removeEventListener('mouseup', handleSelectionChange);
+    };
+  }, []);
+
+  const handleAskClick = () => {
+    window.dispatchEvent(
+      new CustomEvent('openChatWithText', { detail: selectedText })
+    );
+    setShowAskButton(false);
+    window.getSelection()?.removeAllRanges();
+  };
+
+  const publicPages = [
+    '/',
+    '/login',
+    '/signup',
+    '/part4-future/chapter-24-career-paths', // Careers page should be public
+    // All locale-specific versions of public pages
+    '/ur',
+    '/ur/',
+    '/ur/login',
+    '/ur/signup',
+    '/ur/part4-future/chapter-24-career-paths', // Urdu version of careers page
+    // Add any other locale prefixes if they exist
+    '/en',
+    '/en/',
+    '/en/login',
+    '/en/signup',
+  ];
+
+  return (
+    <AuthProvider>
+      <ProtectedRoute publicPages={publicPages}>
+        <>
+          {children}
+
+          {showAskButton && (
+            <button
+              onClick={handleAskClick}
+              style={{
+                position: 'absolute',
+                left: buttonPosition.x,
+                top: buttonPosition.y,
+                padding: '6px 12px',
+                background: '#0066cc',
+                color: '#fff',
+                borderRadius: 4,
+                border: 'none',
+                cursor: 'pointer',
+                zIndex: 9999,
+              }}
+            >
+              Ask
+            </button>
+          )}
+
+          <ChatWidget />
+        </>
+      </ProtectedRoute>
+    </AuthProvider>
+  );
+}

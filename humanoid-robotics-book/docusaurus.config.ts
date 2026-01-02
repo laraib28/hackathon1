@@ -14,6 +14,7 @@ const config: Config = {
   // ✅ Vercel deployment
   url: 'https://hackathon1-9y2e.vercel.app',
   baseUrl: '/',
+  trailingSlash: true,
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -37,9 +38,10 @@ const config: Config = {
         label: 'اردو',
         direction: 'rtl',
         htmlLang: 'ur-PK',
+        path: 'ur', // Explicitly define the path for Urdu locale
       },
     },
-  },
+  } satisfies Config['i18n'],
 
   presets: [
     [
@@ -47,7 +49,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/', // ✅ important
+          routeBasePath: '/', // ✅ important - keep English at root
+          showLastUpdateTime: true,
+          // ✅ Enable i18n support for docs
+          path: 'docs',
         },
         blog: false,
         theme: {
@@ -87,7 +92,8 @@ const config: Config = {
           position: 'left',
         },
         {
-          to: '/part4-future/chapter-24-career-paths',
+          type: 'doc',
+          docId: 'part4-future/chapter-24-career-paths',
           label: '💼 Careers',
           position: 'left',
         },

@@ -1,31 +1,125 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from '@docusaurus/router';
+import React, { useEffect, useState, useRef } from 'react';
+import type { Props } from '@theme/Root';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
 import { AuthProvider } from '../context/AuthContext';
 import ProtectedRoute from '../components/ProtectedRoute';
 import ChatWidget from '../components/ChatWidget/ChatWidget';
+import ErrorBoundary from '../components/ErrorBoundary';
 
-export default function Root({ children }: { children: React.ReactNode }) {
-  const [selectedText, setSelectedText] = useState<string>('');
+export default function Root({ children }: Props) {
+  return (
+    <ErrorBoundary>
+      <RootInner>{children}</RootInner>
+    </ErrorBoundary>
+  );
+}
+
+function RootInner({ children }: { children: React.ReactNode }) {
+  return (
+    <AuthProvider>
+      <ProtectedRoute
+        publicPages={[
+          '/',
+          '/login',
+          '/signup',
+          '/part4-future/chapter-24-career-paths',
+          // Urdu versions
+          '/ur',
+          '/ur/',
+          '/ur/login',
+          '/ur/signup',
+          '/ur/part4-future/chapter-24-career-paths',
+          // English versions
+          '/en',
+          '/en/',
+          '/en/login',
+          '/en/signup',
+        ]}
+      >
+        <>
+          {children}
+          <BrowserOnly>
+            {() => <BrowserFeatures />}
+          </BrowserOnly>
+        </>
+      </ProtectedRoute>
+    </AuthProvider>
+  );
+}
+
+function BrowserFeatures() {
+  const [pathname, setPathname] = useState('/');
+  const pathnameRef = useRef('/');
+  const [selectedText, setSelectedText] = useState('');
   const [showAskButton, setShowAskButton] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  const { pathname } = useLocation();
 
+  useEffect(() => {
+    // Function to update pathname
+    const updatePathname = () => {
+      const newPathname = window.location.pathname;
+      // Only update if the pathname actually changed
+      if (newPathname !== pathnameRef.current) {
+        setPathname(newPathname);
+        pathnameRef.current = newPathname; // Update ref synchronously
+      }
+    };
+
+    // Initial pathname setting
+    updatePathname();
+
+    // Listen for URL changes to update pathname
+    const handlePopState = () => {
+      updatePathname();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Also listen for hash changes
+    const handleHashChange = () => {
+      updatePathname();
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []); // Empty dependency array to run only once
+
+  // Check for locale in pathname - Docusaurus typically serves Urdu content at /ur/ paths
+  const currentLocale = pathname.startsWith('/ur') ? 'ur' : 'en';
+
+  // RTL + language handling
+  useEffect(() => {
+    if (currentLocale === 'ur') {
+      document.documentElement.dir = 'rtl';
+      document.documentElement.lang = 'ur-PK'; // Use full locale code
+      document.body.classList.add('rtl');
+    } else {
+      document.documentElement.dir = 'ltr';
+      document.documentElement.lang = 'en-US'; // Use full locale code
+      document.body.classList.remove('rtl');
+    }
+  }, [currentLocale]);
+
+  // Text selection logic
   useEffect(() => {
     const handleSelectionChange = () => {
       const selection = window.getSelection();
       const text = selection?.toString().trim() || '';
 
-      if (text.length > 0) {
-        setSelectedText(text);
-
-        // Get selection position
+      if (text) {
         const range = selection?.getRangeAt(0);
         const rect = range?.getBoundingClientRect();
 
         if (rect) {
+          setSelectedText(text);
           setButtonPosition({
             x: rect.right + window.scrollX + 10,
-            y: rect.bottom + window.scrollY + 5
+            y: rect.bottom + window.scrollY + 5,
           });
           setShowAskButton(true);
         }
@@ -44,65 +138,36 @@ export default function Root({ children }: { children: React.ReactNode }) {
   }, []);
 
   const handleAskClick = () => {
-    // Dispatch custom event to open chat with selected text
-    const event = new CustomEvent('openChatWithText', { detail: selectedText });
-    window.dispatchEvent(event);
+    window.dispatchEvent(
+      new CustomEvent('openChatWithText', { detail: selectedText })
+    );
     setShowAskButton(false);
     window.getSelection()?.removeAllRanges();
   };
 
-  // Determine which pages are public (don't need authentication)
-  // Include i18n paths as well
-  const isPublicPage = pathname === '/' ||
-                       pathname === '/login' ||
-                       pathname === '/signup' ||
-                       pathname === '/ur' ||
-                       pathname === '/ur/' ||
-                       pathname.startsWith('/ur/login') ||
-                       pathname.startsWith('/ur/signup');
-
-  const publicPages = ['/', '/login', '/signup', '/ur', '/ur/login', '/ur/signup'];
-
   return (
-    <AuthProvider>
-      <ProtectedRoute publicPages={publicPages}>
-        <>
-          {children}
+    <>
+      {showAskButton && (
+        <button
+          onClick={handleAskClick}
+          style={{
+            position: 'absolute',
+            left: buttonPosition.x,
+            top: buttonPosition.y,
+            padding: '6px 12px',
+            background: '#0066cc',
+            color: '#fff',
+            borderRadius: 4,
+            border: 'none',
+            cursor: 'pointer',
+            zIndex: 9999,
+          }}
+        >
+          Ask
+        </button>
+      )}
 
-          {/* Ask button for text selection */}
-          {showAskButton && (
-            <button
-              onClick={handleAskClick}
-              style={{
-                position: 'absolute',
-                left: `${buttonPosition.x}px`,
-                top: `${buttonPosition.y}px`,
-                padding: '6px 12px',
-                backgroundColor: '#0066cc',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                fontSize: '13px',
-                fontWeight: '500',
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                zIndex: 9999,
-                whiteSpace: 'nowrap'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#0052a3';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#0066cc';
-              }}
-            >
-              Ask
-            </button>
-          )}
-
-          <ChatWidget />
-        </>
-      </ProtectedRoute>
-    </AuthProvider>
+      <ChatWidget />
+    </>
   );
 }

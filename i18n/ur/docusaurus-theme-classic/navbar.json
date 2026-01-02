@@ -1,0 +1,106 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "اس صفحہ میں کچھ غلط ہو گیا ہے",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "دوبارہ کوشش کریں",
+    "description": "The label of the button to try again when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "صفحہ نہیں ملا",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "ہمیں وہ صفحہ نہیں مل سکا جو آپ تلاش کر رہے تھے",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "براہ کرم URL کو چیک کریں جس پر آپ گئے تھے، یا ان میں سے کسی ایک پر واپس جائیں",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.admonition.note": {
+    "message": "نوٹ",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "ٹپ",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.danger": {
+    "message": "خطرہ",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "معلومات",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.caution": {
+    "message": "احتیاط",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Navigation bar",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Read more about {title}",
+    "description": "The ARIA label for the link to full blog posts"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read more",
+    "description": "The label used in blog post item excerpts to link to full posts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label for the button that expands the sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The ARIA label for the button that collapses the sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for the button that collapses the sidebar"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for the button that closes the mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "On this page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Toggle word wrap",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.navbar.mobileLanguageDropdown.searchLanguageText": {
+    "message": "Search",
+    "description": "The language used for the mobile language switcher search"
+  }
+}

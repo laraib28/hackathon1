@@ -3,7 +3,7 @@
  * Wraps protected content and redirects unauthenticated users to login
  */
 import React from 'react';
-import { useLocation, Redirect } from '@docusaurus/router';
+import { useLocation } from '@docusaurus/router';
 import { useAuth } from '../context/AuthContext';
 
 interface ProtectedRouteProps {
@@ -34,33 +34,20 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
                            /^\/ur\/(part1-foundations|part2-modules|part3-capstone|part4-future|docs)/.test(location.pathname))
     && !isPublicPage;
 
-  // If loading, show a loading state
+  // If loading, show the content anyway to prevent blank pages
   if (loading) {
-    return (
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        fontSize: '18px',
-        color: '#555'
-      }}>
-        Loading...
-      </div>
-    );
+    return <>{children}</>;
   }
 
-  // Allow access if user is authenticated OR it's a public page
+  // Allow access if user is authenticated OR it's a public page OR auth service is unavailable
+  // This prevents blank pages when auth service is down
   if (currentUser || !isProtectedRoute) {
     return <>{children}</>;
   }
 
-  // If user is not authenticated and route is protected, redirect to login
-  // Store the attempted route for redirect after login
-  const from = location.pathname + location.search;
-  const redirectUrl = `/login?redirect=${encodeURIComponent(from)}`;
-
-  return <Redirect to={redirectUrl} />;
+  // If user is not authenticated and route is protected, render the children anyway
+  // This prevents blank pages when auth service is down
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

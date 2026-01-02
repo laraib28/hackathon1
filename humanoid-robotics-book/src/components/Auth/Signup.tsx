@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useHistory, useLocation } from '@docusaurus/router';
+import { useLocation, useHistory } from '@docusaurus/router';
 import styles from './Auth.module.css';
 
 export default function Signup() {
@@ -12,10 +12,8 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
 
   const { signup, loginWithGoogle } = useAuth();
-
-  // ✅ Docusaurus supported hooks
-  const history = useHistory();
   const location = useLocation();
+  const history = useHistory();
 
   // ✅ Redirect handling
   const searchParams = new URLSearchParams(location.search);
@@ -50,14 +48,24 @@ export default function Signup() {
     try {
       setError('');
       setLoading(true);
-      await signup(email, password, displayName);
 
-      // ✅ Docusaurus navigation
-      history.push(redirectPath);
+      console.log('📝 Submitting signup form...');
+      await signup(email, password, displayName);
+      console.log('✅ Signup successful, redirecting...');
+
+      // Redirect immediately after successful signup
+      window.location.href = redirectPath;
 
     } catch (err: any) {
-      setError(err?.message || 'Failed to create account');
-    } finally {
+      // Handle different error types gracefully
+      if (err?.message?.includes('fetch') || err?.message?.includes('Failed to fetch')) {
+        setError('Unable to connect to authentication server. Please check your connection and try again.');
+      } else if (err?.message?.includes('already exists') || err?.message?.includes('duplicate') || err?.message?.includes('USER_ALREADY_EXISTS')) {
+        setError('An account with this email already exists. Please try logging in instead.');
+      } else {
+        setError(err?.message || 'Failed to create account. Please try again.');
+      }
+      console.error('Signup error:', err);
       setLoading(false);
     }
   }
@@ -66,14 +74,22 @@ export default function Signup() {
     try {
       setError('');
       setLoading(true);
-      await loginWithGoogle();
 
-      // ✅ Docusaurus navigation
-      history.push(redirectPath);
+      console.log('📝 Submitting Google signup...');
+      await loginWithGoogle();
+      console.log('✅ Google signup successful, redirecting...');
+
+      // Redirect immediately after successful signup
+      window.location.href = redirectPath;
 
     } catch (err: any) {
-      setError(err?.message || 'Failed to sign up with Google');
-    } finally {
+      // Handle different error types gracefully
+      if (err?.message?.includes('fetch') || err?.message?.includes('Failed to fetch')) {
+        setError('Unable to connect to authentication server. Please check your connection and try again.');
+      } else {
+        setError(err?.message || 'Failed to sign up with Google. Please try again.');
+      }
+      console.error('Google signup error:', err);
       setLoading(false);
     }
   }

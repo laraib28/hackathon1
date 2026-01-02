@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.bookSidebar.category.Part 1: Foundations of Physical AI & Humanoid Robotics": {
+    "message": "Part 1: Foundations of Physical AI & Humanoid Robotics",
+    "description": "The label for category 'Part 1: Foundations of Physical AI & Humanoid Robotics' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.Part 2: Module-Based Learning": {
+    "message": "Part 2: Module-Based Learning",
+    "description": "The label for category 'Part 2: Module-Based Learning' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.module1-ros2": {
+    "message": "module1-ros2",
+    "description": "The label for category 'module1-ros2' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.module2-digital-twin": {
+    "message": "module2-digital-twin",
+    "description": "The label for category 'module2-digital-twin' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.module3-isaac": {
+    "message": "module3-isaac",
+    "description": "The label for category 'module3-isaac' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.module4-vla": {
+    "message": "module4-vla",
+    "description": "The label for category 'module4-vla' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.Part 3: Capstone - Building the Autonomous Humanoid": {
+    "message": "Part 3: Capstone - Building the Autonomous Humanoid",
+    "description": "The label for category 'Part 3: Capstone - Building the Autonomous Humanoid' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.Part 4: Future of Humanoid Robotics": {
+    "message": "Part 4: Future of Humanoid Robotics",
+    "description": "The label for category 'Part 4: Future of Humanoid Robotics' in sidebar 'bookSidebar'"
+  },
+  "sidebar.bookSidebar.category.Development Tools": {
+    "message": "Development Tools",
+    "description": "The label for category 'Development Tools' in sidebar 'bookSidebar'"
+  }
+}
